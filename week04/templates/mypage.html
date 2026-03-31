@@ -4,22 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>🦁 내 프로필</title>
-    <link rel="stylesheet" href="./mypage.css" />
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}" />
   </head>
   <body>
     <main class="mypage-box">
       <header class="mypage-header">
         <div class="mypage-header-left">
-          <img src="./images/mypage-white.svg" alt="프로필 아이콘" class="mypage-header-icon" />
+          <img src="{% static 'images/mypage-white.svg' %}" alt="프로필 아이콘" class="mypage-header-icon" />
           <h2>내 프로필</h2>
         </div>
-        <img class="icon" src="./images/icon.svg" />
+        <img class="icon" src="{% static 'images/icon.svg' %}" />
       </header>
 
       <section class="mypage-profile">
         <div class="mypage-profile-image-wrap">
           <img
-            src="./images/profile.svg"
+            src="{% static 'images/profile.svg' %}"
             alt="프로필 이미지"
             class="mypage-profile-image"
           />
@@ -54,7 +54,7 @@
       </section>
     </main>
 
-    <a href="./login.html" class="mypage-logout-text">로그아웃</a>
+    <a href="{% url 'login' %}" class="mypage-logout-text">로그아웃</a>
   </body>
-  <script src="./mypage.js"></script>
+  <script src="{% static 'js/mypage.js' %}"></script>
 </html>
