@@ -15,8 +15,10 @@
           <img class="icon" src="{% static 'images/icon.svg' %}" />
           <h2>로그인 성공</h2>
         </div>
-        <button type="button" class="logout-btn" onclick="location.href='{% url 'login' %}'">
+        <button type="button" class="logout-btn">
+          <a href="{% url 'login' %}">
           <img src="{% static 'images/out.svg' %}" alt="로그아웃" />
+          </a>
         </button>
       </header>
       <div class="ment">
