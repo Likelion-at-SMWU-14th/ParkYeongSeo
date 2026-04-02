@@ -18,7 +18,7 @@
     <form method="post">
         {% csrf_token %}
         <input type="text" name="username" placeholder="아이디" autocomplete="off"/>
-        <input type="text" name="password" placeholder="비밀번호" autocomplete="new-password"/>
+        <input type="password" name="password" placeholder="비밀번호" autocomplete="new-password"/>
         <button class="login_btn" type="submit">로그인하기</button>
     </form>
     <aside class="ask_member">

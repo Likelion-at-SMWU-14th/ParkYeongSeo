@@ -8,10 +8,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (followBtn.classList.contains("following")) {
       text.textContent = "팔로잉";
-      icon.src = "./images/following.svg";
+      icon.src = "/static/images/following.svg";
     } else {
       text.textContent = "팔로우";
-      icon.src = "./images/follow.svg";
+      icon.src = "/static/images/follow.svg";
     }
   });
 });
