@@ -1,2 +1,2 @@
-안녕하세요 박영서입니다!
-14기에도 멋사와 함께
+python manage.py makemigrations
+python manage.py migrate
