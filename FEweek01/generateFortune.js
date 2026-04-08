@@ -24,6 +24,8 @@ function getResultComment(score){
 }
 
 function generateFortuneForAll(){
+    let highestScore = 0;
+    let presenter = "";
     console.log("오늘의 운세 결과\n");
 
     names.forEach(name => {
