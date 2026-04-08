@@ -21,9 +21,8 @@ function buyDrink() {
 
         if (wallet >= values[selected]){
             wallet -= values[selected];
-            console.log(keys[selected]);
-            console.log( `음료가 나왔어요! (가격: ${values[selected]})
-                지갑에 남은 돈: ${wallet}원`);
+            console.log();
+            console.log(`${keys[selected]}가 나왔어요! (가격: ${values[selected]}원)\n 지갑에 남은 돈: ${wallet}원`);
         }
 
         else{
