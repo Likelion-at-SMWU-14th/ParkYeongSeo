@@ -10,7 +10,8 @@ const drinks = {
 };
 
 function buyDrink() {
-    let wallet = 5000;
+    let wallet = prompt("현재 보유 금액을 입력하세요: ");
+    console.log(`지갑: ${wallet}`)
     let selected = 0;
 
     const keys = Object.keys(drinks);
@@ -21,7 +22,6 @@ function buyDrink() {
 
         if (wallet >= values[selected]){
             wallet -= values[selected];
-            console.log();
             console.log(`${keys[selected]}가 나왔어요! (가격: ${values[selected]}원)\n 지갑에 남은 돈: ${wallet}원`);
         }
 
