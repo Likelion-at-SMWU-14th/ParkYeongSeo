@@ -10,12 +10,12 @@ const drinks = {
 };
 
 function buyDrink() {
-    let wallet = prompt("현재 보유 금액을 입력하세요: ");
-    console.log(`지갑: ${wallet}`)
-    let selected = 0;
+    let wallet = Number(prompt("현재 보유 금액을 입력하세요: "));
+    console.log(`지갑: ${wallet}`);
 
     const keys = Object.keys(drinks);
     const values = Object.values(drinks);
+    let selected = 0;
 
     for (var i = 1; i <= 3; i++) {
         selected = Math.floor(Math.random() * values.length);
