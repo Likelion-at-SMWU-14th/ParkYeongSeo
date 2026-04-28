@@ -5,7 +5,8 @@ const wishList = document.getElementById('wish-list');
 
 // 위시리스트 추가 함수
 function addWish(event) {
-    event.preventDefault(); // 폼 제출 방지
+    // 폼 제출 방지
+    event.preventDefault();
 
     // 사용자 입력 텍스트 가져오고, 앞뒤 공백 제거
     const wishText = wishInput.value.trim();
@@ -42,7 +43,13 @@ function handleWishClick(event) {
     if (target.classList.contains("delete-btn")){
         target.parentElement.remove();
     }
+
+    // 텍스트 클릭 시 구매 완료 표시
+    else if (target.tagName === "SPAN") {
+        target.parentElement.classList.toggle("completed");
+    }
 }
 
+// 이벤트 등록
 wishForm.addEventListener('submit', addWish);
 wishList.addEventListener('click', handleWishClick);
