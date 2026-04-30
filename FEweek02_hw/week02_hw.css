@@ -14,6 +14,13 @@ body {
     background-color: #FFFFFF;
 }
 
+.content-container {
+    width: 585px;
+    margin: 0 auto;
+    justify-content: flex-start;
+    display: flex;
+}
+
 .header-table td {
     padding-top: 12px;
 }
@@ -77,18 +84,39 @@ body {
 }
 
 .username-content {
-    padding: 4px 0 4px 0;
+    padding-right: 8px;
 }
 
-.hashtag {
-    padding: 0;
+.post-content {
+    padding-right: 4px;
 }
 
 .bold-text {
-    margin: 0;
     font-weight: 600;
 }
 
 .text-table p {
     margin: 0;
 }
+
+.icon .heart-icon {
+    cursor: pointer;
+}
+
+.icon .heart-icon.hearted{
+    content: url('./asset/heart-filled.png');
+}
+
+.bookmark .bookmark-icon {
+    cursor: pointer;
+}
+
+.bookmark .bookmark-icon.bookmarked {
+    content: url('./asset/bookmark-filled.png');
+}
+
+.more-content {
+    color: #a0a0a0;
+    text-align: left;
+}
+
