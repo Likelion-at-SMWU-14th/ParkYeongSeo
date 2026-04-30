@@ -16,9 +16,9 @@ body {
 
 .content-container {
     width: 585px;
-    margin: 0 auto;
+    margin: 4px auto;
     justify-content: flex-start;
-    display: flex;
+    display: block;
 }
 
 .header-table td {
@@ -89,6 +89,7 @@ body {
 
 .post-content {
     padding-right: 4px;
+    display: inline;
 }
 
 .bold-text {
@@ -120,3 +121,9 @@ body {
     text-align: left;
 }
 
+.less-content {
+    color: #a0a0a0;
+    text-align: left;
+    display: none;
+    display: inline-block;
+}
