@@ -1,1 +1,96 @@
 @import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+/* 기본 배경 설정 */
+body {
+    font-family: Pretendard Variable, Pretendard;
+    background-color: #FFFFFF;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 585px;
+    margin: 0 auto;
+    background-color: #FFFFFF;
+}
+
+.header-table td {
+    padding-top: 12px;
+}
+
+.profile-img-td {
+    width: 3rem;
+    padding-right: 12px;
+}
+
+.username {
+    color: #000;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -0.72px;
+    margin: 0px;
+}
+
+.location {
+    color: #000;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.32px;
+    padding-top: 2px;
+    margin: 0px;
+}
+
+.more-btn-td {
+    width: 1.125rem;
+    text-align: center;
+}
+
+.action-table img {
+    vertical-align: middle;
+}
+
+.icon-td {
+    width: 30px;
+    padding-right: 8px;
+}
+
+.regram-td {
+    width: 20px;
+    padding-right: 8px;
+}
+
+.count-td {
+    width: 1.875rem;
+    padding-right: 8px;
+    font-weight: 600;
+    letter-spacing: -0.72px;
+}
+
+.bookmark-td {
+    width: 30px;
+    text-align: right;
+}
+
+
+.text-table td {
+    vertical-align: middle;
+}
+
+.username-content-td {
+    padding: 12px 0 8px 0;
+}
+
+.hashtag-td {
+    padding: 0;
+}
+
+.bold-text {
+    margin: 0;
+    font-weight: 600;
+}
+
+.text-table p {
+    margin: 0;
+}
