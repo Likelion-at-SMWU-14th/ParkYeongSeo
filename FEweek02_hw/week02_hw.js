@@ -29,6 +29,7 @@ const mainText = document.querySelector('.post-content');
 const moreBtn = document.querySelector('.more-content');
 const lessBtn = document.querySelector('.less-content');
 
+
 mainText.textContent = fullContent.slice(0, limit);
 
 moreBtn.addEventListener('click', function() {
@@ -41,4 +42,20 @@ lessBtn.addEventListener('click', function() {
     mainText.textContent = fullContent.slice(0, limit);
     this.style.display = 'none';
     moreBtn.style.display = 'inline';
+});
+
+// dark mode
+const lightBtn = document.getElementById('light-mode');
+const darkBtn = document.getElementById('dark-mode');
+
+lightBtn.addEventListener('click', function() {
+    document.body.classList.add('dark-mode');
+    lightBtn.style.display = 'none';
+    darkBtn.style.display = 'inline';
+});
+
+darkBtn.addEventListener('click', function() {
+    document.body.classList.remove('dark-mode');
+    darkBtn.style.display = 'none';
+    lightBtn.style.display = 'inline';
 });
