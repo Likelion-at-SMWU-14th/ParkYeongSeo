@@ -18,7 +18,7 @@ body {
     padding-top: 12px;
 }
 
-.profile-img-td {
+.profile-img {
     width: 3rem;
     padding-right: 12px;
 }
@@ -42,7 +42,7 @@ body {
     margin: 0px;
 }
 
-.more-btn-td {
+.more-btn {
     width: 1.125rem;
     text-align: center;
 }
@@ -51,38 +51,38 @@ body {
     vertical-align: middle;
 }
 
-.icon-td {
+.icon {
     width: 30px;
     padding-right: 8px;
 }
 
-.regram-td {
+.regram {
     width: 20px;
     padding-right: 8px;
 }
 
-.count-td {
+.count {
     width: 1.875rem;
     padding-right: 8px;
     font-weight: 600;
     letter-spacing: -0.72px;
 }
 
-.bookmark-td {
+.bookmark {
     width: 30px;
     text-align: right;
 }
 
 
-.text-table td {
+.text-table {
     vertical-align: middle;
 }
 
-.username-content-td {
+.username-content {
     padding: 12px 0 8px 0;
 }
 
-.hashtag-td {
+.hashtag {
     padding: 0;
 }
 
