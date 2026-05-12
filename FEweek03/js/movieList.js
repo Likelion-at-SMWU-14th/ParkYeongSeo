@@ -8,3 +8,9 @@ const movies = [
   { title: "짱구", rating: 8.08, genre: "드라마", isAdult: false },
   { title: "살목지", rating: 8.35, genre: "공포", isAdult: false },
 ];
+
+const title = movies.filter((movie) => {
+  return movie.genre.includes("드");
+});
+
+console.log("드가 들어가는 장르의 영화 목록: ", title);
