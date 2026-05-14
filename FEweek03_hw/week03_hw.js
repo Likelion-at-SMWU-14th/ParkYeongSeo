@@ -4,7 +4,6 @@ const container = document.getElementById("musicContainer");
 
 const button = document.querySelector(".searchButton");
 button.addEventListener("click", () => {
-  console.log("검색 버튼이 클릭되었습니다.");
   const searchInput = document.getElementById("searchInput").value;
   fetchMusic(searchInput);
 });
@@ -21,12 +20,14 @@ async function fetchMusic(keyword) {
 
       card.innerHTML = `
       <div class="card-body">
+      <div class="card-wrap">
         <h2 class="card-title">${music.title}</h2>
         <p class="card-singer">${music.singer}</p>
-        <p class="card-description">${music.no}</p>
-        <p class="card-description">${music.lyricist}</p>
-        <p class="card-description">${music.composer}</p>
-        <p class="card-description">${music.release}</p>
+      </div>
+        <p class="card-description">번호 | ${music.no}</p>
+        <p class="card-description">작사 | ${music.lyricist}</p>
+        <p class="card-description">작곡 | ${music.composer}</p>
+        <p class="card-description">발매 | ${music.release}</p>
       </div>
       `;
 
