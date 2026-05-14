@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+
+  background-image: url("./asset/bg.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: repeat-y;
+
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+}
+
+.profile img {
+    width: 14.875rem;
+    height: 15rem;
+    margin-top: 100px;
+}
+
