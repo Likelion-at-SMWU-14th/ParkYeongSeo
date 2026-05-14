@@ -36,6 +36,7 @@ body {
 }
 
 .searchWrap {
+  margin-top: 2rem;
   position: relative;
 
   width: 45rem;
