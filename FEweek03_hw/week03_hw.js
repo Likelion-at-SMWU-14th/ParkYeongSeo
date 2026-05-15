@@ -8,6 +8,13 @@ button.addEventListener("click", () => {
   fetchMusic(searchInput);
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Enter") {
+    const searchInput = document.getElementById("searchInput").value;
+    fetchMusic(searchInput);
+  }
+});
+
 async function fetchMusic(keyword) {
   try {
     const response = await fetch(`https://api.manana.kr/karaoke/singer/${keyword}.json`);
@@ -33,6 +40,11 @@ async function fetchMusic(keyword) {
 
       container.appendChild(card);
     });
+
+    const hr = document.createElement("hr");
+    hr.className = "card-line";
+
+    container.appendChild(hr);
 
   } catch (error) {
     console.log("에러 발생:", error);
