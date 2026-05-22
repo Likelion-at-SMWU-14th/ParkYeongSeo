@@ -7,7 +7,7 @@ const PlaylistWrapper = styled.div`
   flex-direction: column;
   padding: 16px;
   margin: 24px auto 48px auto;
-  border-radius: 16px;
+  border-radius: 8px;
 `
 
 const BorderText = styled.p`

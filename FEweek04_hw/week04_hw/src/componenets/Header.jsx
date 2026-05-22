@@ -1,4 +1,14 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const slide = keyframes`
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+`
 
 const HeaderWrapper = styled.div`
   position: fixed;
@@ -10,11 +20,14 @@ const HeaderWrapper = styled.div`
   display: flex;
   align-items: center;
   z-index: 1000;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
 `
 
 const TextContainer = styled.div`
   display: flex;
   gap: 64px;
+  animation: ${slide} 15s linear infinite;
+  margin-left: 64px;
 `
 
 const HeaderText = styled.p`
@@ -29,6 +42,15 @@ const HeaderText = styled.p`
 const Header = () => {
   return (
     <HeaderWrapper>
+      <TextContainer>
+        <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
+        <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
+        <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
+        <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
+        <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
+        <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
+      </TextContainer>
+
       <TextContainer>
         <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
         <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
