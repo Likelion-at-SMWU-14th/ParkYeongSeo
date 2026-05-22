@@ -10,9 +10,11 @@ const slide = keyframes`
   }
 `
 
-const HeaderWrapper = styled.div`
+const BarWrapper = styled.div`
   position: fixed;
-  bottom: 0;
+
+  ${({ isTop }) => (isTop ? 'top: 0;' : 'bottom: 0;')}
+
   left: 0;
   width: 100%;
   height: 32px;
@@ -21,6 +23,7 @@ const HeaderWrapper = styled.div`
   align-items: center;
   z-index: 1000;
   box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.25);
+  overflow: hidden;
 `
 
 const TextContainer = styled.div`
@@ -39,9 +42,9 @@ const HeaderText = styled.p`
   white-space: nowrap;
 `
 
-const Header = () => {
+const Line = ({ isTop }) => {
   return (
-    <HeaderWrapper>
+    <BarWrapper isTop={isTop}>
       <TextContainer>
         <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
         <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
@@ -59,8 +62,8 @@ const Header = () => {
         <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
         <HeaderText>WELCOME TO MY PLAYLIST</HeaderText>
       </TextContainer>
-    </HeaderWrapper>
+    </BarWrapper>
   )
 }
 
-export default Header
+export default Line

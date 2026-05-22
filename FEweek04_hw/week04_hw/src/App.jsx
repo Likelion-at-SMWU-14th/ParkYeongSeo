@@ -1,16 +1,15 @@
 import './App.css'
-import Header from './componenets/Header'
-import Footer from './componenets/Footer'
+import Line from './componenets/Line'
 import IdCard from './componenets/IdCard'
 import Playlist from './componenets/Playlist'
 
 function App() {
   return (
     <>
-      <Header></Header>
+      <Line isTop={true} />
       <IdCard></IdCard>
       <Playlist></Playlist>
-      <Footer></Footer>
+      <Line isTop={false} />
     </>
   )
 }
