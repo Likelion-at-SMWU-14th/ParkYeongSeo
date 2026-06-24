@@ -60,6 +60,8 @@ export const CalcButton = styled.div`
 
     grid-column: span ${({ $span }) => $span};
 
+    border: 1px solid #444;
+
     
     background-color: ${({ $variant }) => {
         if ($variant === 'operator') {
