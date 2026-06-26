@@ -6,44 +6,26 @@ import Page2 from "../pages/Page2";
 import Page3 from "../pages/Page3";
 import Page4 from "../pages/Page4";
 import Page5 from "../pages/Page5";
-
 import Header from "./Header";
 
 function Container() {
-  const scrollRef = useRef(null);
-
   const handleWheel = (e) => {
     e.preventDefault();
 
-    if (scrollRef.current) {
-      scrollRef.current.scrollLeft += e.deltaY;
-    }
+    e.currentTarget.scrollLeft += e.deltaY;
   };
 
   return (
     <>
-    <Header />
-    <S.ScrollContainer ref={scrollRef} onWheel={handleWheel}>
-      <S.Page>
-        <Page1 />
-      </S.Page>
+      <Header />
 
-      <S.Page>
-        <Page2 />
-      </S.Page>
-
-      <S.Page>
-        <Page3 />
-      </S.Page>
-
-      <S.Page>
-        <Page4 />
-      </S.Page>
-
-      <S.Page>
-        <Page5 />
-      </S.Page>
-    </S.ScrollContainer>
+      <S.ScrollContainer onWheel={handleWheel}>
+        <S.Page><Page1 /></S.Page>
+        <S.Page><Page2 /></S.Page>
+        <S.Page><Page3 /></S.Page>
+        <S.Page><Page4 /></S.Page>
+        <S.Page><Page5 /></S.Page>
+      </S.ScrollContainer>
     </>
   );
 }

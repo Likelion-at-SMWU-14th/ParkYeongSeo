@@ -1,11 +1,8 @@
-import Header from "../components/Header";
+import ProductShowcase from "../components/ProductShowcase.jsx";
+
 
 function Page2() {
-  return (
-    <>
-      <Header/>
-    </>
-  );
+   return <ProductShowcase />;
 }
 
 export default Page2;
