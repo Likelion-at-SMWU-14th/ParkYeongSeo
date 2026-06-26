@@ -2,13 +2,18 @@ import styled from "styled-components";
 
 export const ScrollContainer = styled.main`
   display: flex;
-  width: 100vw;
-  height: 100vh;
-
   overflow-x: auto;
   overflow-y: hidden;
 
+  width: 100vw;
+  height: 100vh;
+
+  scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 export const Page = styled.section`

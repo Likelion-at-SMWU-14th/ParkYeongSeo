@@ -1,7 +1,21 @@
 import styled from "styled-components";
+export const HeaderInner = styled.div`
+  width: 100%;
+  height: 100%;
+
+  padding: 0 1.5rem;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  color: #fff;
+  mix-blend-mode: difference;
+`;
 
 export const Header = styled.header`
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   right: 0;
@@ -16,7 +30,7 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
 
-  z-index: 1000;
+  z-index: 10;
 
   background: transparent;
 `;
@@ -44,7 +58,7 @@ export const Menu = styled.button`
 
 export const Logo = styled.img`
   position: absolute;
-  top: 70%;
+  top: 75%;
   left: 50%;
   transform: translate(-50%, -50%);
 
