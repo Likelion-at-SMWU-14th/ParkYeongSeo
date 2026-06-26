@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Noise from "../assets/overlay.gif";
 
 export const ScrollContainer = styled.main`
   display: flex;
@@ -14,6 +15,20 @@ export const ScrollContainer = styled.main`
   &::-webkit-scrollbar {
     display: none;
   }
+
+  &::before {
+    content: "";
+
+    position: fixed;
+    inset: 0;
+
+    background: url(${Noise}) repeat;
+    background-size: 250px;
+
+    opacity: 0.1;
+    pointer-events: none;
+    z-index: 999;
+  }
 `;
 
 export const Page = styled.section`
@@ -28,3 +43,4 @@ export const Page = styled.section`
 
   scroll-snap-align: start;
 `;
+
