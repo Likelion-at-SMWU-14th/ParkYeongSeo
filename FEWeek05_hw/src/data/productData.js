@@ -1,6 +1,10 @@
 import Product1 from "../assets/Page2-1.jpeg";
 import Product2 from "../assets/Page2-2.jpeg";
 import Product3 from "../assets/Page2-3.jpeg";
+import Product4 from "../assets/Page4-1.png";
+import Product5 from "../assets/Page4-2.jpg";
+import Product6 from "../assets/Page4-3.png";
+
 
 export const productData = [
   {
@@ -23,5 +27,26 @@ export const productData = [
     title: "Keep it on you. Keep it on.",
     description:
       "A hybrid lip objet with the freedom of a balm and the payoff of a lipstick.",
+  },
+  {
+    id: 4,
+    image: Product4,
+    title: "Melts like silk on skin, blooming like watercolor",
+    description:
+      "Object Blush captures the quiet glow of real beauty.",
+  },
+  {
+    id: 5,
+    image: Product5,
+    title: "Fresh glow. Sleek feel.",
+    description:
+      "A seonsorial cushion that hugs the skin, locking in hydration for a clear, bouncy glow.",
+  },
+  {
+    id: 6,
+    image: Product6,
+    title: "Mood-lit colors, velvet finish.",
+    description:
+      "for lips that don't need to try too hard.",
   },
 ];

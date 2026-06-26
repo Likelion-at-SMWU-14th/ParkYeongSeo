@@ -4,7 +4,7 @@ import Noise from "../assets/overlay.gif";
 export const ScrollContainer = styled.main`
   display: flex;
 
-  width: 100vw;
+  width: auto;
   height: 100vh;
 
   overflow-x: auto;
@@ -29,7 +29,7 @@ export const ScrollContainer = styled.main`
 `;
 
 export const Page = styled.section`
-  min-width: 100vw;
+  width: auto;
   height: 100vh;
 
   flex-shrink: 0;

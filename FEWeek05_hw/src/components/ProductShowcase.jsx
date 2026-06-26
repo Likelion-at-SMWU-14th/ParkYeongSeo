@@ -1,10 +1,12 @@
 import * as S from "../styles/ProductShowcase.styled";
 import { productData } from "../data/productData";
 
-function ProductShowcase() {
+function ProductShowcase({ start, end }) {
+  const products = productData.slice(start, end);
+
   return (
     <S.Section>
-      {productData.map((product) => (
+      {products.map((product) => (
         <S.Panel key={product.id}>
           <S.Image src={product.image} alt={product.title} />
 

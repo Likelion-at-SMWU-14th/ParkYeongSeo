@@ -1,10 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.section`
-  width: 50%;
-  height: 70%;
+  height: 80%;
+  width: fit-content;
   
   margin-left: 5rem;
+  margin-right: 5rem;
 
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@ export const Wrapper = styled.section`
 
 export const Grid = styled.div`
   display: grid;
-  grid-template-columns: repeat(4, 0.7fr);
+  grid-template-columns: repeat(4, 20rem);
   gap: 1rem;
 `;
 
