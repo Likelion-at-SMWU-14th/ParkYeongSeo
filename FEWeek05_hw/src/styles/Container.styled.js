@@ -12,10 +12,6 @@ export const ScrollContainer = styled.main`
   overflow-x: auto;
   overflow-y: hidden;
 
-  &::-webkit-scrollbar {
-    display: none;
-  }
-
   &::after {
     content: "";
     position: fixed;
@@ -37,11 +33,4 @@ export const Page = styled.section`
   flex-shrink: 0;
   position: relative;
   z-index: 0;
-`;
-
-export const Wrapper = styled.div`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
 `;
