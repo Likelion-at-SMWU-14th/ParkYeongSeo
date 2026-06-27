@@ -2,6 +2,8 @@ import styled from "styled-components";
 import Noise from "../assets/overlay.gif";
 
 export const ScrollContainer = styled.main`
+  position: relative;
+
   display: flex;
 
   width: auto;
@@ -14,7 +16,7 @@ export const ScrollContainer = styled.main`
     display: none;
   }
 
-  &::before {
+  &::after {
     content: "";
     position: fixed;
     inset: 0;
@@ -24,7 +26,7 @@ export const ScrollContainer = styled.main`
     opacity: 0.1;
 
     pointer-events: none;
-    z-index: 999;
+    z-index: 20;
   }
 `;
 
@@ -33,4 +35,13 @@ export const Page = styled.section`
   height: 100vh;
 
   flex-shrink: 0;
+  position: relative;
+  z-index: 0;
+`;
+
+export const Wrapper = styled.div`
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 `;

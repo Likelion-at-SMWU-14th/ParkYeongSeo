@@ -14,31 +14,31 @@ export const Background = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
-
-  z-index: 0;
 `;
 
 export const Logo = styled.img`
-    position: absolute;
-    top: 90%;
-    left: 25%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 90%;
+  left: 25%;
+  transform: translate(-50%, -50%);
 
-    width: auto;
-    height: 10rem;
-    object-fit: contain;
-    z-index: 1;
-    filter: invert(1);
+  width: auto;
+  height: 10rem;
+  object-fit: contain;
+
+  filter: invert(1);
+  z-index: 1;
 `;
 
-export const text = styled.p`
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    line-height: 1.8;
-    font-size: 1rem;
-    display: flex;
-    color: #fff;
-    align-items: flex-end;
-    padding-right: 50px;
+export const Text = styled.p`
+  position: absolute;
+  top: 50%;
+  left: 60%;
+
+  line-height: 1.8;
+  font-size: 1rem;
+  color: #fff;
+
+  padding-right: 50px;
+  z-index: 1;
 `;
