@@ -2,7 +2,7 @@ import * as S from "../styles/ProductCard.styled";
 
 function ProductCard({ product }) {
   return (
-    <S.Card href={product.url} target="_self">
+    <S.Card href={product.url} target="_self" $hasOption={!!product.option}>
       <S.ImageBox>
         <S.Image src={product.image} alt={product.name} />
         <S.HoverImage src={product.hoverImage} alt={product.name} />
@@ -10,10 +10,16 @@ function ProductCard({ product }) {
 
       <S.Name>{product.name}</S.Name>
 
-      <S.PriceBox>
+      <S.InfoRow>
+        {product.option && (
+          <S.Option $hasOption={!!product.option}>
+            {product.option}
+          </S.Option>
+        )}
+
         <S.OriginalPrice>{product.originalPrice}</S.OriginalPrice>
         <S.SalePrice>{product.salePrice}</S.SalePrice>
-      </S.PriceBox>
+      </S.InfoRow>
     </S.Card>
   );
 }

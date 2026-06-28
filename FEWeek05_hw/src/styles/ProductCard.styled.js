@@ -52,6 +52,24 @@ export const PriceBox = styled.div`
   margin-top: 0.25rem;
 `;
 
+export const InfoRow = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  margin-top: 0.25rem;
+
+  font-size: 0.8rem;
+`;
+
+export const Option = styled.span`
+  display: ${({ $hasOption }) => ($hasOption ? "inline" : "none")};
+
+  color: ${({ $hasOption }) => ($hasOption ? "#999" : "transparent")};
+  font-size: 0.75rem;
+  font-weight: 300;
+`;
+
 export const OriginalPrice = styled.span`
   font-size: 0.8rem;
   color: #777;
