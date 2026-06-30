@@ -1,12 +1,10 @@
 import "./App.css"
-import Info from "./components/Info";
-import Search from "./components/DebouncedSearch"
+import Moive from "./components/Movie";
 
 function App() {
   return (
     <div>
-      <Info />
-      <Search />
+      <Moive />
     </div>
   );
 }
