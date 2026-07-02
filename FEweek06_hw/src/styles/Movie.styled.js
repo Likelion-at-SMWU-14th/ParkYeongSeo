@@ -1,0 +1,69 @@
+import styled from "styled-components";
+
+export const Container = styled.div`
+  min-height: 100vh;
+  margin: 0;
+  padding: 40px;
+  background-color: #ffffff;
+  color: #111;
+`;
+
+export const Title = styled.h3`
+  margin-bottom: 24px;
+  font-size: 28px;
+  font-weight: 700;
+`;
+
+export const MovieGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+`;
+
+export const MovieCard = styled.div`
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: #1f1f1f;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+`;
+
+export const Poster = styled.img`
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+`;
+
+export const MovieInfo = styled.div`
+  padding: 16px;
+`;
+
+export const MovieTitle = styled.h2`
+  margin-bottom: 8px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+`;
+
+export const Rating = styled.p`
+  margin-bottom: 8px;
+  color: #ffd166;
+  font-size: 15px;
+`;
+
+export const Genre = styled.p`
+  display: inline-block;
+  margin-bottom: 12px;
+  padding: 4px 10px;
+  border-radius: 999px;
+  background-color: #ff7a2f;
+  color: white;
+  font-size: 13px;
+  font-weight: 600;
+`;
+
+export const Description = styled.p`
+  color: #cccccc;
+  font-size: 14px;
+  line-height: 1.5;
+`;
