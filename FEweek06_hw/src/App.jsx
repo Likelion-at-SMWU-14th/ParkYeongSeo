@@ -1,9 +1,10 @@
-import "./App.css";
+import "./App.css"
+import Moive from "./components/Movie";
 
 function App() {
   return (
     <div>
-      
+      <Moive />
     </div>
   );
 }
