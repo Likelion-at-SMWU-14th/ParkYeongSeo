@@ -4,6 +4,7 @@ import * as S from "../styles/Movie.styled";
 
 const Movie = () => {
     const [movies, setMovies] = useState([]);
+    const [selectedGenre, setSelectedGenre] = useState("전체");
 
     useEffect(() => {
         axios
@@ -16,12 +17,28 @@ const Movie = () => {
             });
     }, []);
 
+    const genres = ["전체", "로맨스", "드라마", "범죄", "스릴러", "SF", "공포"];
+    
     return (
         <S.Container>
                 <S.Title>무비차트</S.Title>
 
+                <S.ButtonGrid>
+                    {genres.map((genre) => (
+                        <S.Button
+                            key={genre}
+                            onClick={() => setSelectedGenre(genre)}
+                            $active={selectedGenre === genre}
+                        >
+                        {genre}
+                        </S.Button>
+                    ))}
+                </S.ButtonGrid>
+
                 <S.MovieGrid>
-                    {movies.map((movie) => (
+                    {movies
+                    .filter((movie) => selectedGenre === "전체" || movie.genre === selectedGenre)
+                    .map((movie) => (
                         <S.MovieCard key={movie.id}>
                             <S.Poster src={movie.poster} alt={movie.title} />
 

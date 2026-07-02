@@ -67,3 +67,35 @@ export const Description = styled.p`
   font-size: 14px;
   line-height: 1.5;
 `;
+
+export const ButtonGrid = styled.div`
+  display: flex;
+  gap: 12px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
+`;
+
+export const Button = styled.button`
+  padding: 10px 18px;
+  border: none;
+  border-radius: 999px;
+  
+  background-color: ${(props) =>
+    props.$active ? "#ff7a2f" : "#f2f2f2"};
+  color: ${(props) =>
+    props.$active ? "#ffffff" : "#333333"};
+
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: #ff7a2f;
+    color: #ffffff;
+  }
+
+  &:active {
+    transform: scale(0.97);
+  }
+`;
