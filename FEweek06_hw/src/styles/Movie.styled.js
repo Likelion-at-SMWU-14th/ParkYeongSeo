@@ -99,3 +99,29 @@ export const Button = styled.button`
     transform: scale(0.97);
   }
 `;
+
+export const SearchInput = styled.input`
+  width: 100%;
+  max-width: 360px;
+  padding: 12px 16px;
+  margin-bottom: 24px;
+
+  border: 2px solid #e5e5e5;
+  border-radius: 999px;
+
+  font-size: 15px;
+  color: #333333;
+  background-color: #ffffff;
+
+  outline: none;
+  transition: all 0.2s ease;
+
+  &::placeholder {
+    color: #999999;
+  }
+
+  &:focus {
+    border-color: #ff7a2f;
+    box-shadow: 0 0 0 4px rgba(255, 122, 47, 0.15);
+  }
+`;

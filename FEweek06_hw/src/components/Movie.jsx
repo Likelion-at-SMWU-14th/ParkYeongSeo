@@ -5,6 +5,7 @@ import * as S from "../styles/Movie.styled";
 const Movie = () => {
     const [movies, setMovies] = useState([]);
     const [selectedGenre, setSelectedGenre] = useState("전체");
+    const [searchKeyword, setSearchKeyword] = useState("");
 
     useEffect(() => {
         axios
@@ -35,9 +36,17 @@ const Movie = () => {
                     ))}
                 </S.ButtonGrid>
 
+                <S.SearchInput
+                    type="text"
+                    value={searchKeyword}
+                    onChange={(e) => setSearchKeyword(e.target.value)}
+                    placeholder="영화 제목 검색"
+                />
+
                 <S.MovieGrid>
                     {movies
                     .filter((movie) => selectedGenre === "전체" || movie.genre === selectedGenre)
+                    .filter((movie) => movie.title.includes(searchKeyword))
                     .map((movie) => (
                         <S.MovieCard key={movie.id}>
                             <S.Poster src={movie.poster} alt={movie.title} />
