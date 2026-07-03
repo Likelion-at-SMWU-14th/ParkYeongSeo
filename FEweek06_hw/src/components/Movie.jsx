@@ -24,6 +24,8 @@ const Movie = () => {
         <S.Container>
                 <S.Title>무비차트</S.Title>
 
+                <S.FilterContainer>
+
                 <S.ButtonGrid>
                     {genres.map((genre) => (
                         <S.Button
@@ -42,6 +44,7 @@ const Movie = () => {
                     onChange={(e) => setSearchKeyword(e.target.value)}
                     placeholder="영화 제목 검색"
                 />
+                </S.FilterContainer>
 
                 <S.MovieGrid>
                     {movies

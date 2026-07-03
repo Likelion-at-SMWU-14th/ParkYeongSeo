@@ -100,24 +100,29 @@ export const Button = styled.button`
   }
 `;
 
+export const FilterContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+
 export const SearchInput = styled.input`
-  width: 100%;
-  max-width: 360px;
-  padding: 12px 16px;
-  margin-bottom: 24px;
+  width: 320px;
+  height: 40px;
+  padding: 0 16px;
 
   border: 2px solid #e5e5e5;
   border-radius: 999px;
 
-  font-size: 15px;
-  color: #333333;
-  background-color: #ffffff;
+  font-size: 14px;
+  color: #333;
+  background-color: #fff;
 
   outline: none;
   transition: all 0.2s ease;
 
   &::placeholder {
-    color: #999999;
+    color: #999;
   }
 
   &:focus {
