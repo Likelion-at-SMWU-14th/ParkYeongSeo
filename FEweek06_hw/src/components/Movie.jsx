@@ -20,9 +20,9 @@ const Movie = () => {
 
     const genres = ["전체", "로맨스", "드라마", "범죄", "스릴러", "SF", "공포"];
 
-    const filteredMoives = movies
+    const filteredMovies = movies
     .filter((movie) => selectedGenre === "전체" || movie.genre === selectedGenre)
-    .filter((movie) => movie.title.includes(searchKeyword));
+    .filter((movie) => movie.genre.includes(searchKeyword) || movie.description.includes(searchKeyword) || movie.title.includes(searchKeyword));
     
     return (
         <S.Container>
@@ -46,15 +46,15 @@ const Movie = () => {
                     type="text"
                     value={searchKeyword}
                     onChange={(e) => setSearchKeyword(e.target.value)}
-                    placeholder="영화 제목 검색"
+                    placeholder="영화 검색"
                 />
                 </S.FilterContainer>
 
                 <S.MovieGrid>
-                    {filteredMoives.length === 0 ? (
+                    {filteredMovies.length === 0 ? (
                         <S.NoResult>검색 결과가 없습니다.</S.NoResult>
                     ) : (
-                    filteredMoives.map((movie) => (
+                    filteredMovies.map((movie) => (
                             <S.MovieCard key={movie.id}>
                                 <S.Poster src={movie.poster} alt={movie.title} />
 
