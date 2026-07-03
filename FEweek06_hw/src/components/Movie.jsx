@@ -19,6 +19,10 @@ const Movie = () => {
     }, []);
 
     const genres = ["전체", "로맨스", "드라마", "범죄", "스릴러", "SF", "공포"];
+
+    const filteredMoives = movies
+    .filter((movie) => selectedGenre === "전체" || movie.genre === selectedGenre)
+    .filter((movie) => movie.title.includes(searchKeyword));
     
     return (
         <S.Container>
@@ -47,12 +51,12 @@ const Movie = () => {
                 </S.FilterContainer>
 
                 <S.MovieGrid>
-                    {movies
-                    .filter((movie) => selectedGenre === "전체" || movie.genre === selectedGenre)
-                    .filter((movie) => movie.title.includes(searchKeyword))
-                    .map((movie) => (
-                        <S.MovieCard key={movie.id}>
-                            <S.Poster src={movie.poster} alt={movie.title} />
+                    {filteredMoives.length === 0 ? (
+                        <S.NoResult>검색 결과가 없습니다.</S.NoResult>
+                    ) : (
+                    filteredMoives.map((movie) => (
+                            <S.MovieCard key={movie.id}>
+                                <S.Poster src={movie.poster} alt={movie.title} />
 
                             <S.MovieInfo>
                                 <S.MovieTitle>{movie.title}</S.MovieTitle>
@@ -61,7 +65,7 @@ const Movie = () => {
                                 <S.Description>{movie.description}</S.Description>
                             </S.MovieInfo>
                         </S.MovieCard>
-                    ))}
+                    )))}
                 </S.MovieGrid>
         </S.Container>
     );

@@ -130,3 +130,14 @@ export const SearchInput = styled.input`
     box-shadow: 0 0 0 4px rgba(255, 122, 47, 0.15);
   }
 `;
+
+export const NoResult = styled.p`
+  grid-column: 1 / -1;
+
+  padding: 60px 0;
+  text-align: center;
+
+  color: #888;
+  font-size: 18px;
+  font-weight: 600;
+`;
