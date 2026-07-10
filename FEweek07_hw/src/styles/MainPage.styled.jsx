@@ -9,13 +9,13 @@ export const MainContainer = styled.main`
   justify-content: center;
   align-items: center;
 
-  background-color: #272727;
+  background-color: #282828;
 `;
 
 export const MainTitle = styled.h1`
   margin: 0;
 
-  color: #ff8738;
+  color: #FF893A;
   font-size: 64px;
   line-height: 1.3;
   text-align: center;
@@ -40,8 +40,8 @@ export const StartButton = styled.button`
   border: none;
   border-radius: 999px;
 
-  background-color: #ff8738;
-  color: #272727;
+  background-color: #FF893A;
+  color: #282828;
 
   font-size: 20px;
   font-weight: 600;
