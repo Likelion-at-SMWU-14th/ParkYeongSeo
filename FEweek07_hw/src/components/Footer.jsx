@@ -1,6 +1,6 @@
 import * as S from "../styles/Footer.styled";
 
-const Footer = () => {
+const Footer = ({ excludedLion }) => {
   const footerItems = Array.from({ length: 8 });
 
   return (
@@ -9,8 +9,8 @@ const Footer = () => {
         <S.MarqueeGroup>
           {footerItems.map((_, index) => (
             <S.FooterItem key={`first-${index}`}>
-              <span>제외 사자</span>
-              <strong>이연재</strong>
+              <strong>제외 사자</strong>
+              <span>{excludedLion}</span>
             </S.FooterItem>
           ))}
         </S.MarqueeGroup>
@@ -18,8 +18,8 @@ const Footer = () => {
         <S.MarqueeGroup aria-hidden="true">
           {footerItems.map((_, index) => (
             <S.FooterItem key={`second-${index}`}>
-              <span>제외 사자</span>
-              <strong>이연재</strong>
+              <strong>제외 사자</strong>
+              <span>{excludedLion}</span>
             </S.FooterItem>
           ))}
         </S.MarqueeGroup>

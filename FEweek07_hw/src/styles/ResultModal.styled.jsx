@@ -35,7 +35,7 @@ export const ModalOverlay = styled.div`
   justify-content: center;
   align-items: center;
 
-  background-color: rgba(40, 40, 40, 0.82);
+  background-color: rgba(40, 40, 40, 0.9);
 
   z-index: 100;
 
@@ -53,7 +53,7 @@ export const ModalContent = styled.div`
 export const WinnerName = styled.h2`
   margin: 0;
 
-  color: var(--color-orange);
+  color: #fff;
 
   font-size: clamp(80px, 11vw, 170px);
   font-weight: 700;

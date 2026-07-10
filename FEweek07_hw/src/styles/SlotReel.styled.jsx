@@ -71,7 +71,7 @@ export const WinnerItem = styled.div`
   justify-content: center;
   align-items: center;
 
-  color: #282828;
+  color: var(--color-orange);
 
   font-size: 34px;
   font-weight: 700;
