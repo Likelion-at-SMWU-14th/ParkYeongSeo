@@ -52,3 +52,30 @@ export const SlotBackground = styled.img`
   user-select: none;
   pointer-events: none;
 `;
+
+/* 임시 */
+export const DebugArea = styled.div`
+  position: fixed;
+  top: 20px;
+  right: 20px;
+
+  padding: 16px;
+
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+
+  color: #282828;
+  font-size: 14px;
+
+  z-index: 20;
+
+  button {
+    margin-top: 8px;
+    margin-right: 8px;
+    padding: 8px 12px;
+
+    border-radius: 8px;
+    background-color: #ff893A;
+    cursor: pointer;
+  }
+`;

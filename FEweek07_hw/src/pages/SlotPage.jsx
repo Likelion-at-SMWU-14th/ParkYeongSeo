@@ -1,5 +1,6 @@
 import SlotImage from "../assets/slot.svg";
 import Footer from "../components/Footer";
+import SlotMachine from "../components/SlotMachine";
 import useSlot from "../hooks/useSlot";
 import * as S from "../styles/SlotPage.styled";
 
@@ -25,10 +26,14 @@ const SlotPage = () => {
           src={SlotImage}
           alt="발표자 추첨 슬롯머신"
         />
+
+        <SlotMachine candidates={candidates} />
       </S.SlotMachineArea>
 
-      {/* 데이터 확인용 */}
-      <div>
+      <Footer />
+
+      {/* 데이터 확인용 임시 영역 */}
+      <S.DebugArea>
         <p>제외 사자: {excludedLion}</p>
         <p>후보: {candidates.join(", ")}</p>
         <p>당첨자: {winner ?? "아직 없음"}</p>
@@ -40,9 +45,7 @@ const SlotPage = () => {
         <button type="button" onClick={prepareNextRound}>
           다음 추첨 준비
         </button>
-      </div>
-
-      <Footer />
+      </S.DebugArea>
     </S.SlotPageContainer>
   );
 };
