@@ -9,8 +9,9 @@ export const SlotPageContainer = styled.main`
   align-items: center;
 
   padding-top: 72px;
+  padding-bottom: 68px;
 
-  background-color: #282828;
+  background-color: #272727;
   overflow: hidden;
 `;
 

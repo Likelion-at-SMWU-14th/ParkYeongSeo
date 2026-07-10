@@ -1,4 +1,5 @@
 import SlotImage from "../assets/slot.svg";
+import Footer from "../components/Footer";
 import * as S from "../styles/SlotPage.styled";
 
 const SlotPage = () => {
@@ -16,6 +17,8 @@ const SlotPage = () => {
           alt="발표자 추첨 슬롯머신"
         />
       </S.SlotMachineArea>
+
+      <Footer />
     </S.SlotPageContainer>
   );
 };
