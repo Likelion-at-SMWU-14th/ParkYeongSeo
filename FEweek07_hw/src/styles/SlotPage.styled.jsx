@@ -11,7 +11,7 @@ export const SlotPageContainer = styled.main`
   padding-top: 72px;
   padding-bottom: 68px;
 
-  background-color: #272727;
+  background-color: #282828;
   overflow: hidden;
 `;
 
@@ -30,52 +30,28 @@ export const SlotTitle = styled.h1`
   strong {
     font-weight: 700;
   }
-
-  @media (max-width: 768px) {
-    font-size: 40px;
-  }
 `;
 
-export const SlotMachineArea = styled.section`
+export const MachineSection = styled.section`
   position: relative;
 
-  width: min(960px, 80vw);
-  margin-top: 90px;
+  display: flex;
+  align-items: center;
+  gap: 56px;
+
+  margin-top: 88px;
 `;
 
-export const SlotBackground = styled.img`
-  display: block;
+export const SlotMachineFrame = styled.div`
+  width: 860px;
+  height: 410px;
 
-  width: 100%;
-  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-  user-select: none;
-  pointer-events: none;
-`;
+  padding: 58px 74px;
 
-/* 임시 */
-export const DebugArea = styled.div`
-  position: fixed;
-  top: 20px;
-  right: 20px;
-
-  padding: 16px;
-
-  background-color: rgba(255, 255, 255, 0.9);
-  border-radius: 12px;
-
-  color: #282828;
-  font-size: 14px;
-
-  z-index: 20;
-
-  button {
-    margin-top: 8px;
-    margin-right: 8px;
-    padding: 8px 12px;
-
-    border-radius: 8px;
-    background-color: #ff893A;
-    cursor: pointer;
-  }
+  border-radius: 52px;
+  background-color: #FF893A;
 `;

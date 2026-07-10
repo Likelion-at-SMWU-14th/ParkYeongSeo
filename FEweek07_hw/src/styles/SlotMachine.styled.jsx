@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const ReelsContainer = styled.div`
-  position: absolute;
-  top: 60px;
-  left: 76px;
+  width: 100%;
+  height: 100%;
 
-  display: flex;
-  gap: 54px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 52px;
+
+  align-items: center;
+  justify-items: center;
 `;
