@@ -10,6 +10,17 @@
   box-sizing: border-box;
 }
 
+:root {
+  --color-orange: #ff893a;
+  --color-black: #282828;
+  --color-white: #ffffff;
+}
+
+body {
+  background-color: var(--color-black);
+  color: var(--color-black);
+}
+
 html,
 body,
 #root {
