@@ -10,20 +10,15 @@ const rollUp = keyframes`
   }
 `;
 
-const winnerPop = keyframes`
+const stopPop = keyframes`
   0% {
-    opacity: 0;
-    transform: scale(0.7);
-  }
-
-  65% {
-    opacity: 1;
-    transform: scale(1.12);
+    transform: scale(1.18);
+    opacity: 0.6;
   }
 
   100% {
-    opacity: 1;
     transform: scale(1);
+    opacity: 1;
   }
 `;
 
@@ -63,19 +58,36 @@ export const ReelItem = styled.div`
   white-space: nowrap;
 `;
 
-export const WinnerItem = styled.div`
-  position: absolute;
-  inset: 0;
+export const StoppedList = styled.div`
+  width: 100%;
+  height: 100%;
 
+  display: grid;
+  grid-template-rows: repeat(3, 1fr);
+
+  animation: ${stopPop} 0.2s ease-out;
+`;
+
+export const StoppedItem = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
 
-  color: var(--color-orange);
+  color: #282828;
+
+  font-size: 28px;
+  font-weight: 600;
+  white-space: nowrap;
+`;
+
+export const WinnerItem = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #ff893a;
 
   font-size: 34px;
   font-weight: 700;
   white-space: nowrap;
-
-  animation: ${winnerPop} 0.45s ease-out;
 `;

@@ -11,7 +11,7 @@ const Button = ({
       disabled={disabled}
       aria-label="슬롯 시작"
     >
-      START
+      Pick!
     </S.SlotButton>
   );
 };

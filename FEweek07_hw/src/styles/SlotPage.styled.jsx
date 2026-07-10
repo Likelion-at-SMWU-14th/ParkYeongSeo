@@ -16,11 +16,13 @@ export const SlotPageContainer = styled.main`
 `;
 
 export const SlotTitle = styled.h1`
+  position: relative;
+  z-index: 200;
+
   margin: 0;
 
-  color: #FF893A;
+  color: #ff893a;
   font-size: 64px;
-  line-height: 1.3;
   text-align: center;
 
   span {
@@ -35,11 +37,12 @@ export const SlotTitle = styled.h1`
 export const MachineSection = styled.section`
   position: relative;
 
-  display: flex;
-  align-items: center;
-  gap: 56px;
-
+  width: 100%;
   margin-top: 88px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const SlotMachineFrame = styled.div`
@@ -53,5 +56,5 @@ export const SlotMachineFrame = styled.div`
   padding: 58px 74px;
 
   border-radius: 52px;
-  background-color: #FF893A;
+  background-color: #ff893a;
 `;

@@ -4,13 +4,33 @@ const SlotReel = ({
   names,
   duration = 3,
   winner,
-  isSpinning,
+  isStopped,
 }) => {
   const repeatedNames = [...names, ...names];
 
+  const winnerIndex = names.indexOf(winner);
+
+  const previousName =
+    winnerIndex >= 0
+      ? names[(winnerIndex - 1 + names.length) % names.length]
+      : "";
+
+  const nextName =
+    winnerIndex >= 0
+      ? names[(winnerIndex + 1) % names.length]
+      : "";
+
   return (
     <S.ReelWindow>
-      {isSpinning ? (
+      {isStopped && winner ? (
+        <S.StoppedList>
+          <S.StoppedItem>{previousName}</S.StoppedItem>
+
+          <S.WinnerItem>{winner}</S.WinnerItem>
+
+          <S.StoppedItem>{nextName}</S.StoppedItem>
+        </S.StoppedList>
+      ) : (
         <S.ReelList $duration={duration}>
           {repeatedNames.map((name, index) => (
             <S.ReelItem key={`${name}-${index}`}>
@@ -18,10 +38,6 @@ const SlotReel = ({
             </S.ReelItem>
           ))}
         </S.ReelList>
-      ) : (
-        <S.WinnerItem>
-          {winner}
-        </S.WinnerItem>
       )}
     </S.ReelWindow>
   );

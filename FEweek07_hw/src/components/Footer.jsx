@@ -9,8 +9,8 @@ const Footer = ({ excludedLion }) => {
         <S.MarqueeGroup>
           {footerItems.map((_, index) => (
             <S.FooterItem key={`first-${index}`}>
-              <strong>제외 사자</strong>
-              <span>{excludedLion}</span>
+              <span>제외 사자</span>
+              <strong>{excludedLion}</strong>
             </S.FooterItem>
           ))}
         </S.MarqueeGroup>
@@ -18,8 +18,8 @@ const Footer = ({ excludedLion }) => {
         <S.MarqueeGroup aria-hidden="true">
           {footerItems.map((_, index) => (
             <S.FooterItem key={`second-${index}`}>
-              <strong>제외 사자</strong>
-              <span>{excludedLion}</span>
+              <span>제외 사자</span>
+              <strong>{excludedLion}</strong>
             </S.FooterItem>
           ))}
         </S.MarqueeGroup>
