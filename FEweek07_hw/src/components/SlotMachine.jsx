@@ -1,18 +1,28 @@
 import SlotReel from "./SlotReel";
 import * as S from "../styles/SlotMachine.styled";
 
-const SlotMachine = ({ candidates }) => {
+const SlotMachine = ({
+  candidates,
+  winner,
+  isSpinning,
+}) => {
   const reels = [
     {
       names: candidates,
       duration: 2.6,
     },
     {
-      names: [...candidates.slice(2), ...candidates.slice(0, 2)],
+      names: [
+        ...candidates.slice(2),
+        ...candidates.slice(0, 2),
+      ],
       duration: 2.9,
     },
     {
-      names: [...candidates.slice(4), ...candidates.slice(0, 4)],
+      names: [
+        ...candidates.slice(4),
+        ...candidates.slice(0, 4),
+      ],
       duration: 3.2,
     },
   ];
@@ -24,6 +34,8 @@ const SlotMachine = ({ candidates }) => {
           key={index}
           names={reel.names}
           duration={reel.duration}
+          winner={winner}
+          isSpinning={isSpinning}
         />
       ))}
     </S.ReelsContainer>

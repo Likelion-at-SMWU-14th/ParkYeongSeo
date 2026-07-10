@@ -1,6 +1,9 @@
 import * as S from "../styles/Button.styled";
 
-const Button = ({ onClick, disabled = false }) => {
+const Button = ({
+  onClick,
+  disabled = false,
+}) => {
   return (
     <S.SlotButton
       type="button"
