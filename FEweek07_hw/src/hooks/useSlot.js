@@ -1,8 +1,22 @@
 import { useMemo, useState } from "react";
 import lions from "../data/lions";
 
+const STORAGE_KEY = "excludedLion";
+
+const getInitialExcludedLion = () => {
+  const savedLion = localStorage.getItem(STORAGE_KEY);
+
+  if (savedLion && lions.includes(savedLion)) {
+    return savedLion;
+  }
+
+  return "이연재";
+};
+
 const useSlot = () => {
-  const [excludedLion, setExcludedLion] = useState("이연재");
+  const [excludedLion, setExcludedLion] = useState(
+    getInitialExcludedLion,
+  );
 
   const [winner, setWinner] = useState(null);
 
@@ -27,13 +41,14 @@ const useSlot = () => {
     if (!winner) {
       return;
     }
+    
+    localStorage.setItem(STORAGE_KEY, winner);
 
     setExcludedLion(winner);
     setWinner(null);
   };
 
   return {
-    lions,
     candidates,
     excludedLion,
     winner,
