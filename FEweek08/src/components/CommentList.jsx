@@ -1,83 +1,72 @@
+import { COMMENT_DATA } from "../constant/comment";
+import Comment from "./Comment";
 import styled from "styled-components";
+import { useEffect, useState } from "react";
+import axios from 'axios';
 
-const CommentForm = () => {
+const CommentList = () => {
+
+    const [ comments, setComments ] = useState([]);
+    const [ loading, setLoading ] = useState(true);
+    const [ error, setError ] = useState(false);
+
+    const getComment = () => {
+        setLoading(true);
+        setError(false);
+
+        axios
+            .get ("http://127.0.0.1:8000/entries/")
+            .then((res) => {
+                console.log(res);
+                setComments(res.data);
+            })
+            .catch((err) => {
+                console.log(err);
+                setError(true);
+            })
+            .finally(() => {
+                setLoading(false);
+            });
+    };
+
+    useEffect(() => {
+        getComment();
+    }, []);
+
+    if (loading) {
+        return <Message>게시글을 불러오는 중입니다.</Message>;
+    }
+
+    if (error) {
+        return <Message>게시글을 불러오지 못했습니다. 잠시 후 다시 시도.</Message>;
+    }
+
+    if (comments.length == 0){
+        return <Message>아직 등록된 게시글이 없습니다</Message>;
+    }
+
   return (
-    <FormWrapper>
-      <InputWrapper>
-        <Label>이름</Label>
-        <Input placeholder="이름을 입력해주세요" />
-      </InputWrapper>
-      <InputWrapper>
-        <Label>내용</Label>
-        <TextArea placeholder="내용을 입력해주세요" />
-      </InputWrapper>
-    </FormWrapper>
+    <CommentWrapper>
+      {comments.map((comment) => (
+        <Comment key={comment.id} comment={comment} />
+      ))}
+    </CommentWrapper>
   );
 };
 
-export default CommentForm;
+export default CommentList;
 
-const FormWrapper = styled.div`
-  display: flex;
+const CommentWrapper = styled.div`
+  display: grid;
   width: 100%;
-  padding: 3.75rem 2.5rem;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 2.5rem;
-  border-radius: 0.4375rem;
-  background: var(--bg-white);
+  padding: 2rem 3.5rem;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem 1.75rem;
 `;
 
-const InputWrapper = styled.div`
-  display: flex;
+const Message = styled.div`
   width: 100%;
-  flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.75rem;
-`;
-
-const Label = styled.p`
-  margin: 0;
-  color: var(--text-black);
-  font-size: 1.5rem;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-`;
-
-const Input = styled.input`
-  display: flex;
-  padding: 1.0625rem 1.5rem;
-  align-items: flex-start;
-  gap: 0.625rem;
-  border: none;
-  outline: none;
-  border-radius: 0.4375rem;
-  background: rgba(245, 241, 237, 0.5);
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  &::placeholder {
-    color: var(--text-brown);
-  }
-`;
-
-const TextArea = styled.textarea`
-  display: flex;
-  height: 10.3125rem;
-  padding: 1.5rem;
-  align-items: flex-start;
-  gap: 0.625rem;
-  border: none;
-  outline: none;
-  resize: none;
-  border-radius: 0.4375rem;
-  background: rgba(245, 241, 237, 0.5);
-  font-size: 1.25rem;
-  font-style: normal;
-  font-weight: 400;
-  &::placeholder {
-    color: var(--text-brown);
-  }
+  padding: 2rem;
+  text-align: center;
+  color: #666;
 `;
