@@ -21,7 +21,8 @@ const WritePage = () => {
           setAuthor(res.data.author);
           setComment(res.data.comment);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => 
+          console.log(err));
     }
   }, [id]);
 
