@@ -2,39 +2,60 @@ import React from "react";
 import Button from "../components/Button";
 import CommentForm from "../components/CommentForm";
 import styled from "styled-components";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams} from "react-router-dom";
 import axios from "axios";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const WritePage = () => {
   const navigate = useNavigate();
+  const { id } = useParams();  
 
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
 
-  const postComment = () => {
-    axios
-        .post("http://127.0.0.1:8000/entries/", {
-            author: author,
-            comment: comment,
-        })
-
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(`http://127.0.0.1:8000/entries/${id}/`)
         .then((res) => {
-            alert("게시글 작성이 완료되었어요.");
-            console.log("게시글 작성 완료");
-            navigate("/");
+          setAuthor(res.data.author);
+          setComment(res.data.comment);
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [id]);
+
+  const submitComment = () => {
+    if (id) {
+      axios
+        .put(`http://127.0.0.1:8000/entries/${id}/`, { author, comment })
+        .then(() => {
+          alert("게시글이 수정되었어요.");
+          navigate(`/`);
         })
         .catch((err) => {
-            console.log(err);
-            alert("게시글 작성 실패");
+          console.log(err);
+          alert("게시글 수정 실패");
         });
+    } else {
+      axios
+        .post("http://127.0.0.1:8000/entries/", { author, comment })
+        .then(() => {
+          alert("게시글 작성이 완료되었어요.");
+          navigate("/");
+        })
+        .catch((err) => {
+          console.log(err);
+          alert("게시글 작성 실패");
+        });
+    }
   };
 
   return (
     <WritePageWrapper>
-        <CommentForm setAuthor={setAuthor} setComment={setComment} />
+        <CommentForm author={author} comment={comment} setAuthor={setAuthor} setComment={setComment} />
       <ButtonWrapper>
-        <Button text="작성하기" onBtnClick={postComment} />
+        <Button text={id ? "수정하기" : "작성하기"} onBtnClick={submitComment} />
         <Button text="취소" onBtnClick={() => navigate(-1)} />
       </ButtonWrapper>
     </WritePageWrapper>

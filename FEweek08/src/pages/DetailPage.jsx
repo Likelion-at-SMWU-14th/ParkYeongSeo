@@ -2,6 +2,7 @@ import React from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
 import DetailComment from "../components/DetailComment";
+import CommentForm from "../components/CommentForm";
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
@@ -10,6 +11,8 @@ const DetailPage = () => {
   const { id } = useParams();
   const [ detail, setDetail ] = useState(null);
   const navigate = useNavigate();
+    const [author, setAuthor] = useState("");
+    const [comment, setComment] = useState("");
 
   const getDetail = (id) => {
     axios
@@ -27,6 +30,13 @@ const DetailPage = () => {
     getDetail(id);
   }, [id]);
 
+  useEffect(() => {
+  if (detail) {
+    setAuthor(detail.author);
+    setComment(detail.comment);
+  }
+}, [detail]);
+
   const deleteComment = () => {
     axios
         .delete(`http://127.0.0.1:8000/entries/${id}/`)
@@ -40,21 +50,13 @@ const DetailPage = () => {
         });
   };
 
-  const fixComment = () => {
-    axios
-        .get(`http://127.0.0.1:8000/entries/${id}/`)
-        .then ((res) => {
-            
-        })
-  }
-
   if (!detail) return null;
 
   return (
     <DetailPageWrapper>
       <DetailComment detail={detail} />
       <ButtonWrapper>
-        <Button text="수정하기" />
+        <Button text="수정하기" onBtnClick={() => navigate(`/edit/${id}`)}/>
         <Button text="삭제하기" onBtnClick={deleteComment}/>
       </ButtonWrapper>
     </DetailPageWrapper>
