@@ -12,19 +12,8 @@ const WritePage = () => {
 
   const [author, setAuthor] = useState("");
   const [comment, setComment] = useState("");
-
-  useEffect(() => {
-    if (id) {
-      axios
-        .get(`http://127.0.0.1:8000/entries/${id}/`)
-        .then((res) => {
-          setAuthor(res.data.author);
-          setComment(res.data.comment);
-        })
-        .catch((err) => 
-          console.log(err));
-    }
-  }, [id]);
+  const [loading, setLoading] = useState(true);
+  const [ error, setError] = useState(false);
 
   const submitComment = () => {
     if (id) {
@@ -37,6 +26,9 @@ const WritePage = () => {
         .catch((err) => {
           console.log(err);
           alert("게시글 수정 실패");
+        })
+        .finally(() => {
+          setLoading(false);
         });
     } else {
       axios
@@ -48,9 +40,32 @@ const WritePage = () => {
         .catch((err) => {
           console.log(err);
           alert("게시글 작성 실패");
+        })
+        .finally(() => {
+          setLoading(false);
         });
     }
   };
+
+  useEffect(() => {
+    if (id) {
+      axios
+        .get(`http://127.0.0.1:8000/entries/${id}/`)
+        .then((res) => {
+          setAuthor(res.data.author);
+          setComment(res.data.comment);
+        })
+        .catch((err) => 
+          console.log(err))
+        .finally(() => setTimeout(() => setLoading(false), 2000));
+    } else {
+      setTimeout(() => setLoading(false), 2000);
+    }
+  }, [id]);
+
+  if (loading) {
+    return <Message>{id ? "게시글 수정 페이지 로딩중" : "게시글 작성 페이지 로딩중"}</Message>;
+  }
 
   return (
     <WritePageWrapper>
@@ -79,4 +94,11 @@ const ButtonWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 1.75rem;
+`;
+
+const Message = styled.div`
+  width: 100%;
+  padding: 2rem;
+  text-align: center;
+  color: rgb(102, 102, 102);
 `;

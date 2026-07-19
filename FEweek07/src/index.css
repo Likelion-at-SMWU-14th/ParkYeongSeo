@@ -303,12 +303,6 @@ button,
   font-weight: 500;
 }
 
-.message {
-  font-size: 1rem;
-  font-weight: 500;
-  opacity: 0.95;
-}
-
 .detailed-results {
   text-align: left;
   margin-bottom: 2rem;
