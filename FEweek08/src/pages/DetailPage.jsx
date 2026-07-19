@@ -1,63 +1,19 @@
 import React from "react";
 import Button from "../components/Button";
 import styled from "styled-components";
+import { COMMENT_DATA } from "../constant/comment";
 import DetailComment from "../components/DetailComment";
-import CommentForm from "../components/CommentForm";
-import { useParams, useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useParams } from "react-router-dom";
 
 const DetailPage = () => {
   const { id } = useParams();
-  const [ detail, setDetail ] = useState(null);
-  const navigate = useNavigate();
-    const [author, setAuthor] = useState("");
-    const [comment, setComment] = useState("");
-
-  const getDetail = (id) => {
-    axios
-        .get(`http://127.0.0.1:8000/entries/${id}/`)
-        .then((res) => {
-            console.log(res);
-            setDetail(res.data);
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-  };
-
-  useEffect(() => {
-    getDetail(id);
-  }, [id]);
-
-  useEffect(() => {
-  if (detail) {
-    setAuthor(detail.author);
-    setComment(detail.comment);
-  }
-}, [detail]);
-
-  const deleteComment = () => {
-    axios
-        .delete(`http://127.0.0.1:8000/entries/${id}/`)
-        .then((res) => {
-            alert("게시글이 삭제되었어요.");
-            console.log("게시글 삭제 완료");
-            navigate("/");
-        })
-        .catch((err) => {
-            console.log(err);
-        });
-  };
-
-  if (!detail) return null;
-
+  const detail = COMMENT_DATA.find((comment) => comment.id === Number(id));
   return (
     <DetailPageWrapper>
       <DetailComment detail={detail} />
       <ButtonWrapper>
-        <Button text="수정하기" onBtnClick={() => navigate(`/edit/${id}`)}/>
-        <Button text="삭제하기" onBtnClick={deleteComment}/>
+        <Button text="수정하기" />
+        <Button text="삭제하기" />
       </ButtonWrapper>
     </DetailPageWrapper>
   );
