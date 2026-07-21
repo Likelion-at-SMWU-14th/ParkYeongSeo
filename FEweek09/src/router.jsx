@@ -4,6 +4,7 @@ import CommentPage from "./pages/CommentPage";
 import DetailPage from "./pages/DetailPage";
 import WritePage from "./pages/WritePage";
 import LoginPage from "./pages/LoginPage";
+import EditPage from "./pages/EditPage";
 
 const router = createBrowserRouter([
     {
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
             {
                 path: "/login",
                 element: <LoginPage />
+            },
+            {
+                path: "edit/:id",
+                element: <EditPage />
             },
         ],
     },
