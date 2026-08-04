@@ -1,11 +1,11 @@
-import { useState } from "react";
 import styled from "styled-components";
+import useTheme from "../hooks/useTheme";
 
 const ToggleBtn = () => {
-  const [isDark, setIsDark] = useState(false); // 기본값: 라이트
+  const { isDark, toggleTheme } = useTheme();
 
   return (
-    <ToggleButton onClick={() => setIsDark((prev) => !prev)}>
+    <ToggleButton onClick={toggleTheme}>
       {isDark ? "🌙 Dark" : "☀️ Light"}
     </ToggleButton>
   );
@@ -17,7 +17,7 @@ const ToggleButton = styled.button`
   padding: 9px 18px;
   font-family: "Inter", sans-serif;
   font-size: 14px;
-  color: #1f1b17;
+  color: ${({ theme }) => theme.text};
   background-color: transparent;
   border: 1px solid #e4ddd0;
   border-radius: 30px;
