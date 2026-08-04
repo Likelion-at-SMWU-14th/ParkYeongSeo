@@ -38,8 +38,8 @@ const Wrapper = styled.div`
   min-height: 100vh;
   margin: 0;
   padding: 30px 100px;
-  background-color: #f7f3ec;
-  color: #1f1b17;
+  background-color: ${({ theme }) => theme.bg};
+  color: ${({ theme }) => theme.text};
 `;
 
 const Title = styled.h1`
@@ -58,7 +58,7 @@ const Label = styled.h3`
   margin: 0 0 10px;
   font-size: 14px;
   font-weight: 600;
-  color: #6b6259;
+  color: ${({ theme }) => theme.muted};
 `;
 
 const TextInput = styled.input`
