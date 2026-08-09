@@ -5,7 +5,7 @@ import MemberList from "./MemberList";
 const Right = () => {
   return (
     <Wrapper>
-      <MemberList />
+      <MemberList  />
     </Wrapper>
   );
 };
