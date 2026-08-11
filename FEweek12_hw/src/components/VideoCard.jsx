@@ -68,7 +68,7 @@ const Title = styled.p`
   font-size: 14px;
   font-weight: 700;
   line-height: 1.4;
-  color: #142433;
+  color: var(--text-color);
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
@@ -78,7 +78,7 @@ const Title = styled.p`
 const Channel = styled.p`
   margin: 4px 0 0;
   font-size: 12px;
-  color: #7288a0;
+  color: var(--text-color);
 `;
 
 const Footer = styled.div`

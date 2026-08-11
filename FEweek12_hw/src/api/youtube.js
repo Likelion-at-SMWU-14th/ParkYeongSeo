@@ -18,7 +18,7 @@ export async function searchVideos(query) {
     part: 'snippet',
     q: buildFancamQuery(query.trim()),
     type: 'video',
-    maxResults: '25', // 필터링으로 걸러질 걸 감안해 넉넉히 요청
+    maxResults: '15',
     key: API_KEY,
   });
 

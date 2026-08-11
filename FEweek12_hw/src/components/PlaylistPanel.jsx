@@ -64,8 +64,6 @@ export default function PlaylistPanel() {
         </label>
       </Header>
 
-      {items.length === 0 && <p>왼쪽에서 하트를 눌러 직캠을 담아보세요.</p>}
-
       {items.map((video) => (
         <VideoCard
           key={video.id}

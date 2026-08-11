@@ -1,3 +1,4 @@
+// src/components/SearchPanel.jsx
 import styled from 'styled-components';
 import { useSearchStore } from '../store/searchStore';
 import { usePlaylistStore } from '../store/playlistStore';
@@ -28,7 +29,7 @@ const SearchBar = styled.form`
     padding: 12px 20px;
     border: none;
     border-radius: 10px;
-    background: #7fb8e0;
+    background: var(--theme-color, #7fb8e0);
     font-weight: 700;
     cursor: pointer;
   }
