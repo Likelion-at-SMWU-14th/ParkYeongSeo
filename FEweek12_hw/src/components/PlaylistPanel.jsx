@@ -5,11 +5,22 @@ import VideoCard from './VideoCard';
 
 const Page = styled.section`
   background: #f2f6f9;
-  border-radius: 20px;
+  border-radius: 4px 20px 20px 4px;
   padding: 22px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
+`;
+
+const ResultList = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-right: 4px;
 `;
 
 const Header = styled.div`
@@ -49,21 +60,21 @@ export default function PlaylistPanel() {
   const themeColor = useThemeStore((s) => s.themeColor);
   const setThemeColor = useThemeStore((s) => s.setThemeColor);
 
-  return (
-    <Page>
-      <Header>
-        <Title>나만의 직캠 PLAYLIST ♩♪♬</Title>
+return (
+  <Page>
+    <Header>
+      <Title>나만의 직캠 PLAYLIST ♩♪♬</Title>
+      <label>
+        <ColorDot as="span" $color={themeColor} />
+        <HiddenColorInput
+          type="color"
+          value={themeColor}
+          onChange={(e) => setThemeColor(e.target.value)}
+        />
+      </label>
+    </Header>
 
-        <label>
-          <ColorDot as="span" $color={themeColor} />
-          <HiddenColorInput
-            type="color"
-            value={themeColor}
-            onChange={(e) => setThemeColor(e.target.value)}
-          />
-        </label>
-      </Header>
-
+    <ResultList>
       {items.map((video) => (
         <VideoCard
           key={video.id}
@@ -72,6 +83,7 @@ export default function PlaylistPanel() {
           onLikeClick={() => toggleItem(video)}
         />
       ))}
-    </Page>
-  );
+    </ResultList>
+  </Page>
+);
 }

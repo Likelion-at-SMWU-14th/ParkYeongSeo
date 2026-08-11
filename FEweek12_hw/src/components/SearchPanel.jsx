@@ -6,11 +6,22 @@ import VideoCard from './VideoCard';
 
 const Page = styled.section`
   background: #f2f6f9;
-  border-radius: 20px;
+  border-radius: 20px 4px 4px 20px;
   padding: 22px;
+  height: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
+  overflow: hidden;
+`;
+
+const ResultList = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-right: 4px;
 `;
 
 const SearchBar = styled.form`
@@ -52,19 +63,19 @@ export default function SearchPanel() {
   };
 
   return (
-    <Page>
-      <SearchBar onSubmit={handleSubmit}>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="예: 있지 예지"
-        />
-        <button type="submit">검색</button>
-      </SearchBar>
+  <Page>
+    <SearchBar onSubmit={handleSubmit}>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="예: 있지 예지"
+      />
+      <button type="submit">검색</button>
+    </SearchBar>
 
+    <ResultList>
       {loading && <p>검색 중...</p>}
       {error && <p>{error}</p>}
-
       {results.map((video) => {
         const saved = items.some((i) => i.id === video.id);
         return (
@@ -76,6 +87,7 @@ export default function SearchPanel() {
           />
         );
       })}
-    </Page>
-  );
+    </ResultList>
+  </Page>
+);
 }

@@ -6,6 +6,7 @@ import { useThemeStore } from './store/themeStore';
 
 const Notebook = styled.div`
   width: min(1200px, 100%);
+  height: 82vh;
   margin: 40px auto;
   background: var(--theme-color, #acd7f0);
   border-radius: 28px;
@@ -18,14 +19,14 @@ const Notebook = styled.div`
 
 const Spine = styled.img`
   position: absolute;
-  top: 0;
-  bottom: 0;
+  top: 18px;
+  bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  height: 100%;
-  width: 40px;
+  width: 60px;
   z-index: 2;
   pointer-events: none;
+  object-fit: cover;
 `;
 
 export default function App() {
