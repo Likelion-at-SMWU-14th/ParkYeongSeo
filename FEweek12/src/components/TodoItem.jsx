@@ -1,4 +1,4 @@
-import useTodoStore from '../store/todoStore';
+import useTodoStore from '../store/store';
 import * as S from "../styles/styled";
 
 const TodoItem = ({ todo }) => {
