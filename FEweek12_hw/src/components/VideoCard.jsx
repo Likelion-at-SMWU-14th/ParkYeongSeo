@@ -37,11 +37,12 @@ const Card = styled.div`
   border-radius: 14px;
   padding: 10px;
   border: 1px solid #e3ebf1;
+  box-shadow: 0px 0px 5px 0px var(--theme-color, #cfd9e0);
 `;
 
 const Thumb = styled.div`
-  width: 150px;
-  min-width: 150px;
+  width: 220px; 
+  min-width: 220px;
   aspect-ratio: 16 / 9;
   border-radius: 10px;
   overflow: hidden;
@@ -65,8 +66,7 @@ const Body = styled.div`
 
 const Title = styled.p`
   margin: 0;
-  font-size: 14px;
-  font-weight: 700;
+  font-size: 12px;
   line-height: 1.4;
   color: var(--text-color);
   display: -webkit-box;

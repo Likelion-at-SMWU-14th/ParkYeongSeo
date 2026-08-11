@@ -44,7 +44,6 @@ const SearchBar = styled.form`
     border: none;
     border-radius: 10px;
     background: var(--theme-color, #7fb8e0);
-    font-weight: 700;
     cursor: pointer;
   }
 `;
@@ -71,7 +70,7 @@ export default function SearchPanel() {
       <input
         value={query}
         onChange={(e) => setQuery(e.target.value)}
-        placeholder="예: 있지 예지"
+        placeholder="공식 그룹명 및 이름으로 검색해주세요 ♬"
       />
       <button type="submit">검색</button>
     </SearchBar>

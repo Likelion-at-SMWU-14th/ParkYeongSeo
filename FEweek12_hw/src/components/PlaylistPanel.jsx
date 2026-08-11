@@ -34,8 +34,7 @@ const TitleBar = styled.div`
 
 const Title = styled.h2`
   margin: 0;
-  font-size: 17px;
-  font-weight: 800;
+  font-size: 14px;
 `;
 
 const ColorDot = styled.button`

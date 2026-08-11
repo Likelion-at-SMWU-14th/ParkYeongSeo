@@ -1,14 +1,16 @@
-// src/store/themeStore.js
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 export const useThemeStore = create(
   devtools(
-    (set) => ({
-      themeColor: '#ACD7F0',
-      setThemeColor: (color) =>
-        set({ themeColor: color }, false, 'theme/setThemeColor'),
-    }),
+    persist(
+      (set) => ({
+        themeColor: '#ACD7F0',
+        setThemeColor: (color) =>
+          set({ themeColor: color }, false, 'theme/setThemeColor'),
+      }),
+      { name: 'fancam-theme' }
+    ),
     { name: 'ThemeStore' }
   )
 );
