@@ -1,4 +1,3 @@
-// src/store/playlistStore.js
 import { create } from 'zustand';
 import { devtools } from 'zustand/middleware';
 
@@ -7,85 +6,27 @@ export const usePlaylistStore = create(
     (set, get) => ({
       items: [],
 
-      addItem: (video) => {
+      isSaved: (id) => get().items.some((i) => i.id === id),
+
+      // 담겨있으면 빼고, 없으면 담는 토글
+      toggleItem: (video) => {
         const { items } = get();
-        const existing = items.find((i) => i.id === video.id);
+        const exists = items.some((i) => i.id === video.id);
 
-        if (existing) {
+        if (exists) {
           set(
-            {
-              items: items.map((i) =>
-                i.id === video.id ? { ...i, priority: i.priority + 1 } : i
-              ),
-            },
+            { items: items.filter((i) => i.id !== video.id) },
             false,
-            'playlist/increasePriorityOnDuplicateAdd'
+            'playlist/removeViaToggle'
           );
-          return;
-        }
-
-        set(
-          {
-            items: [...items, { ...video, priority: 1, liked: false }],
-          },
-          false,
-          'playlist/addItem'
-        );
-      },
-
-      removeItem: (id) =>
-        set(
-          { items: get().items.filter((i) => i.id !== id) },
-          false,
-          'playlist/removeItem'
-        ),
-
-      increasePriority: (id) =>
-        set(
-          {
-            items: get().items.map((i) =>
-              i.id === id ? { ...i, priority: i.priority + 1 } : i
-            ),
-          },
-          false,
-          'playlist/increasePriority'
-        ),
-
-      decreasePriority: (id) => {
-        const { items } = get();
-        const target = items.find((i) => i.id === id);
-        if (!target) return;
-
-        if (target.priority <= 1) {
+        } else {
           set(
-            { items: items.filter((i) => i.id !== id) },
+            { items: [...items, { ...video }] },
             false,
-            'playlist/decreasePriorityToRemove'
+            'playlist/addViaToggle'
           );
-          return;
         }
-
-        set(
-          {
-            items: items.map((i) =>
-              i.id === id ? { ...i, priority: i.priority - 1 } : i
-            ),
-          },
-          false,
-          'playlist/decreasePriority'
-        );
       },
-
-      toggleLike: (id) =>
-        set(
-          {
-            items: get().items.map((i) =>
-              i.id === id ? { ...i, liked: !i.liked } : i
-            ),
-          },
-          false,
-          'playlist/toggleLike'
-        ),
     }),
     { name: 'PlaylistStore' }
   )

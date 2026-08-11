@@ -3,44 +3,6 @@ import { useSearchStore } from '../store/searchStore';
 import { usePlaylistStore } from '../store/playlistStore';
 import VideoCard from './VideoCard';
 
-export default function SearchPanel() {
-  const query = useSearchStore((s) => s.query);
-  const setQuery = useSearchStore((s) => s.setQuery);
-  const search = useSearchStore((s) => s.search);
-  const results = useSearchStore((s) => s.results);
-  const loading = useSearchStore((s) => s.loading);
-  const error = useSearchStore((s) => s.error);
-  const addItem = usePlaylistStore((s) => s.addItem);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    search();
-  };
-
-  return (
-    <Page>
-      <SearchBar onSubmit={handleSubmit}>
-        <input
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="예: 있지 예지"
-        />
-        <button type="submit">검색</button>
-      </SearchBar>
-
-      {loading && <p>검색 중...</p>}
-      {error && <p>{error}</p>}
-
-      {results.map((video) => (
-        <VideoCard key={video.id} {...video}>
-          <AddButton onClick={() => addItem(video)}>담기</AddButton>
-        </VideoCard>
-      ))}
-    </Page>
-  );
-}
-
-
 const Page = styled.section`
   background: #f2f6f9;
   border-radius: 20px;
@@ -72,13 +34,47 @@ const SearchBar = styled.form`
   }
 `;
 
-const AddButton = styled.button`
-  border: none;
-  background: #5aa8d6;
-  color: #fff;
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 12px;
-  font-weight: 700;
-  cursor: pointer;
-`;
+export default function SearchPanel() {
+  const query = useSearchStore((s) => s.query);
+  const setQuery = useSearchStore((s) => s.setQuery);
+  const search = useSearchStore((s) => s.search);
+  const results = useSearchStore((s) => s.results);
+  const loading = useSearchStore((s) => s.loading);
+  const error = useSearchStore((s) => s.error);
+
+  const items = usePlaylistStore((s) => s.items);
+  const toggleItem = usePlaylistStore((s) => s.toggleItem);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    search();
+  };
+
+  return (
+    <Page>
+      <SearchBar onSubmit={handleSubmit}>
+        <input
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="예: 있지 예지"
+        />
+        <button type="submit">검색</button>
+      </SearchBar>
+
+      {loading && <p>검색 중...</p>}
+      {error && <p>{error}</p>}
+
+      {results.map((video) => {
+        const saved = items.some((i) => i.id === video.id);
+        return (
+          <VideoCard
+            key={video.id}
+            {...video}
+            liked={saved}
+            onLikeClick={() => toggleItem(video)}
+          />
+        );
+      })}
+    </Page>
+  );
+}
