@@ -27,17 +27,20 @@ const ResultList = styled.div`
 const SearchBar = styled.form`
   display: flex;
   gap: 10px;
+  height: 48px;
 
   input {
     flex: 1;
-    padding: 12px 16px;
+    height: 48px;
+    padding: 0 16px;
     border-radius: 10px;
     border: 1px solid #d5e2ea;
     font-size: 15px;
   }
 
   button {
-    padding: 12px 20px;
+    height: 48px;
+    padding: 0 20px;
     border: none;
     border-radius: 10px;
     background: var(--theme-color, #7fb8e0);
