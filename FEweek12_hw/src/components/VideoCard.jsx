@@ -93,5 +93,6 @@ const HeartButton = styled.button`
   background: transparent;
   font-size: 18px;
   cursor: pointer;
-  color: ${(props) => (props.$liked ? '#e0668a' : '#5aa8d6')};
+  color: ${(props) =>
+    props.$liked ? 'var(--theme-color)' : '#c2cdd5'};
 `;

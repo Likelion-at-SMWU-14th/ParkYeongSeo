@@ -23,10 +23,10 @@ const Spine = styled.img`
   bottom: 18px;
   left: 50%;
   transform: translateX(-50%);
-  width: 60px;
-  z-index: 2;
+  width: 78px;
+  z-index: 0;
   pointer-events: none;
-  object-fit: cover;
+  object-fit: contain;
 `;
 
 export default function App() {
