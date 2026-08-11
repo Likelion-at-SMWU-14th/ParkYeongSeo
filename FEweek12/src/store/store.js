@@ -1,8 +1,10 @@
 import { create } from 'zustand';
-import { devtools } from 'zustand/middleware';
+import { devtools, persist } from 'zustand/middleware';
 
 const useTodoStore = create(
-    devtools((set) => ({
+    devtools(
+        persist(
+            (set) => ({
     todos: [],
     addTodo: (rawTitle) => {
         const title = rawTitle.trim();
@@ -32,7 +34,10 @@ const useTodoStore = create(
             undefined,
             "todo/toggleTodo",
         ),
-    })),
+    }),
+    { name:"todo-store"},
+    ),
+),
 );
 
 export default useTodoStore;
