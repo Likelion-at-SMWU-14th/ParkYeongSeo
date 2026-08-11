@@ -1,13 +1,17 @@
-// src/api/youtube.js
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
 const BASE_URL = 'https://www.googleapis.com/youtube/v3/search';
+
+function buildFancamQuery(rawQuery) {
+  const hasFancamKeyword = /직캠|fancam|focus/i.test(rawQuery);
+  return hasFancamKeyword ? rawQuery : `${rawQuery} 직캠`;
+}
 
 export async function searchVideos(query) {
   if (!query?.trim()) return [];
 
   const params = new URLSearchParams({
     part: 'snippet',
-    q: query,
+    q: buildFancamQuery(query.trim()),
     type: 'video',
     maxResults: '12',
     key: API_KEY,
@@ -24,8 +28,8 @@ export async function searchVideos(query) {
 
   return (data.items || []).map((item) => ({
     id: item.id.videoId,
-    title: item.snippet.title,
-    channelTitle: item.snippet.channelTitle,
+    title: decodeHtml(item.snippet.title),
+    channelTitle: decodeHtml(item.snippet.channelTitle),
     thumbnail: item.snippet.thumbnails?.medium?.url,
   }));
 }
