@@ -29,7 +29,6 @@ export default function VideoCard({
   );
 }
 
-
 const Card = styled.div`
   display: flex;
   gap: 14px;

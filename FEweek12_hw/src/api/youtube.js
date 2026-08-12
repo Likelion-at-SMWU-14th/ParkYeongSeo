@@ -1,4 +1,3 @@
-// src/api/youtube.js
 import { decodeHtml } from '../utils/decodeHtml';
 
 const API_KEY = import.meta.env.VITE_YOUTUBE_API_KEY;
@@ -38,6 +37,5 @@ export async function searchVideos(query) {
     thumbnail: item.snippet.thumbnails?.medium?.url,
   }));
 
-  // 제목에 직캠 관련 키워드가 없는 영상은 제외
   return normalized.filter((video) => FANCAM_KEYWORD_REGEX.test(video.title));
 }

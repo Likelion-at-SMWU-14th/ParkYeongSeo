@@ -4,50 +4,6 @@ import { useSearchStore } from '../store/searchStore';
 import { usePlaylistStore } from '../store/playlistStore';
 import VideoCard from './VideoCard';
 
-const Page = styled.section`
-  background: #f2f6f9;
-  border-radius: 20px 4px 4px 20px;
-  padding: 22px;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  overflow: hidden;
-`;
-
-const ResultList = styled.div`
-  flex: 1;
-  overflow-y: auto;
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding-right: 4px;
-`;
-
-const SearchBar = styled.form`
-  display: flex;
-  gap: 10px;
-  height: 48px;
-
-  input {
-    flex: 1;
-    height: 48px;
-    padding: 0 16px;
-    border-radius: 10px;
-    border: 1px solid #d5e2ea;
-    font-size: 15px;
-  }
-
-  button {
-    height: 48px;
-    padding: 0 20px;
-    border: none;
-    border-radius: 10px;
-    background: var(--theme-color, #7fb8e0);
-    cursor: pointer;
-  }
-`;
-
 export default function SearchPanel() {
   const query = useSearchStore((s) => s.query);
   const setQuery = useSearchStore((s) => s.setQuery);
@@ -93,3 +49,48 @@ export default function SearchPanel() {
   </Page>
 );
 }
+
+
+const Page = styled.section`
+  background: #f2f6f9;
+  border-radius: 20px 4px 4px 20px;
+  padding: 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+`;
+
+const ResultList = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-right: 4px;
+`;
+
+const SearchBar = styled.form`
+  display: flex;
+  gap: 10px;
+  height: 48px;
+
+  input {
+    flex: 1;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid #d5e2ea;
+    font-size: 15px;
+  }
+
+  button {
+    height: 48px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--theme-color, #7fb8e0);
+    cursor: pointer;
+  }
+`;

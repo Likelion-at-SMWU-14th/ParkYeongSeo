@@ -26,7 +26,7 @@ export const usePlaylistStore = create(
           }
         },
       }),
-      { name: 'fancam-playlist' } // localStorage에 저장될 키 이름
+      { name: 'fancam-playlist' }
     ),
     { name: 'PlaylistStore' }
   )

@@ -3,6 +3,44 @@ import { usePlaylistStore } from '../store/playlistStore';
 import { useThemeStore } from '../store/themeStore';
 import VideoCard from './VideoCard';
 
+export default function PlaylistPanel() {
+  const items = usePlaylistStore((s) => s.items);
+  const toggleItem = usePlaylistStore((s) => s.toggleItem);
+  const themeColor = useThemeStore((s) => s.themeColor);
+  const setThemeColor = useThemeStore((s) => s.setThemeColor);
+
+  return (
+    <Page>
+      <Header>
+        <TitleBar>
+          <Title>나만의 직캠 PLAYLIST ♩♪♬</Title>
+        </TitleBar>
+
+        <label>
+          <ColorDot as="span" $color={themeColor} />
+          <HiddenColorInput
+            type="color"
+            value={themeColor}
+            onChange={(e) => setThemeColor(e.target.value)}
+          />
+        </label>
+      </Header>
+
+      <ResultList>
+        {items.map((video) => (
+          <VideoCard
+            key={video.id}
+            {...video}
+            liked={true}
+            onLikeClick={() => toggleItem(video)}
+          />
+        ))}
+      </ResultList>
+    </Page>
+  );
+}
+
+
 const Page = styled.section`
   background: #f2f6f9;
   border-radius: 4px 20px 20px 4px;
@@ -66,40 +104,3 @@ const ResultList = styled.div`
   gap: 14px;
   padding-right: 4px;
 `;
-
-export default function PlaylistPanel() {
-  const items = usePlaylistStore((s) => s.items);
-  const toggleItem = usePlaylistStore((s) => s.toggleItem);
-  const themeColor = useThemeStore((s) => s.themeColor);
-  const setThemeColor = useThemeStore((s) => s.setThemeColor);
-
-  return (
-    <Page>
-      <Header>
-        <TitleBar>
-          <Title>나만의 직캠 PLAYLIST ♩♪♬</Title>
-        </TitleBar>
-
-        <label>
-          <ColorDot as="span" $color={themeColor} />
-          <HiddenColorInput
-            type="color"
-            value={themeColor}
-            onChange={(e) => setThemeColor(e.target.value)}
-          />
-        </label>
-      </Header>
-
-      <ResultList>
-        {items.map((video) => (
-          <VideoCard
-            key={video.id}
-            {...video}
-            liked={true}
-            onLikeClick={() => toggleItem(video)}
-          />
-        ))}
-      </ResultList>
-    </Page>
-  );
-}
