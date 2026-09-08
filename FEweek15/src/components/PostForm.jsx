@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useCreatePost } from "../hooks/useCreatePost";
 
 function PostForm() {
-    const [ title, setTitle] = useState("");
+    const [title, setTitle] = useState("");
     const { mutate } = useCreatePost();
 
     const handleSubmit = (e) => {
