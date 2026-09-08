@@ -3,7 +3,7 @@ import { fetchPosts } from "../api/posts";
 
 export const usePosts = () => {
     return useQuery({
-        queryKey: ["posts"],
+        queryKey: ['posts'],
         queryFn: fetchPosts,
     })
 }
