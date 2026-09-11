@@ -5,7 +5,7 @@ function SignupForm() {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const { mutate } = useCreateUser();
+    const { mutate} = useCreateUser();
 
     const handleSubmit = (e) => {
         e.preventDefault();

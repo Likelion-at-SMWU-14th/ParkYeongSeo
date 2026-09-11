@@ -13,7 +13,7 @@ export const updateUser = async ({ userId, ...updatedUser }) => {
 }
 
 export const fetchUsers = async (userId) => {
-    const { data } = await axios.get(`${BASE_URL}/users/${userId}`);
+    const { data } = await axios.get(`${BASE_URL}/users test/${userId}`);
     return data
 }
 
