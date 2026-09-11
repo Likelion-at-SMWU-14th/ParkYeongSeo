@@ -37,7 +37,7 @@ function SignupForm() {
             />
 
             <button type="submit">
-                등록하기
+                가입
             </button>
         </form>
     );
