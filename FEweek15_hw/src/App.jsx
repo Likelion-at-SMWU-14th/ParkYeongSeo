@@ -2,7 +2,7 @@ import PostForm from "./components/PostForm";
 import PostList from "./components/PostList";
 import SignupForm from "./components/SignupForm";
 import UpdateForm from "./components/UpdateForm";
-import UserList from "./components/UserList";
+import DeleteForm from "./components/DeleteForm";
 
 function App() {
   return(
@@ -10,7 +10,7 @@ function App() {
       <h1>Posts</h1>
       <SignupForm />
       <UpdateForm />
-      <UserList />
+      <DeleteForm />
       <PostForm />
       <PostList />
     </div>

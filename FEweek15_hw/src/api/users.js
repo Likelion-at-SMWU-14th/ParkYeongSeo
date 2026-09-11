@@ -16,3 +16,8 @@ export const fetchUsers = async (userId) => {
     const { data } = await axios.get(`${BASE_URL}/users/${userId}`);
     return data
 }
+
+export const deleteUser = async (userId) => {
+    await axios.delete(`${BASE_URL}/users/${userId}`)
+    return userId
+}

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useUpdateUser } from "../hooks/useUpdateUser";
 
-function UpdateUserForm() {
+function UpdateForm() {
   const [username, setUsername] = useState("");
   const { mutate } = useUpdateUser();
 
@@ -27,11 +27,11 @@ function UpdateUserForm() {
     />
 
 
-      <button type="submit">
-        수정
-      </button>
+    <button type="submit">
+      수정
+    </button>
     </form>
   );
 }
 
-export default UpdateUserForm;
+export default UpdateForm;

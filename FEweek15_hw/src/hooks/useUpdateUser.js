@@ -11,7 +11,7 @@ export const useUpdateUser = () => {
       queryClient.invalidateQueries({
         queryKey: ["myPage"],
       });
-      alert("수정 완료");
+      alert("수정이 완료되었습니다.");
     },
   });
 };

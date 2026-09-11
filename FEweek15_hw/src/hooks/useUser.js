@@ -8,5 +8,9 @@ export const useUser = (userId) => {
 
     staleTime: 30 * 1000,
     retry: 3,
+
+    gcTime: 5 * 60 * 1000,
+
+    enabled: !!userId,
   });
 };
