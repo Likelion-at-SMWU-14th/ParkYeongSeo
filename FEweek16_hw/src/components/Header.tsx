@@ -1,4 +1,4 @@
-import * as S from "../styles/Header.styled.js";
+import * as S from "../styles/Header.styled";
 import HeaderLogo from "../assets/Header_Logo.svg";
 
 function Header() {

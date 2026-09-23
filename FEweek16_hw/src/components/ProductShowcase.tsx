@@ -1,7 +1,12 @@
 import * as S from "../styles/ProductShowcase.styled";
 import { productData } from "../data/productData";
 
-function ProductShowcase({ start, end }) {
+interface ProductShowcaseProps {
+  start: number;
+  end: number;
+}
+
+function ProductShowcase({ start, end }: ProductShowcaseProps) {
   const products = productData.slice(start, end);
 
   return (

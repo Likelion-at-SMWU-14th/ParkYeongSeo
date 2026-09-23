@@ -1,6 +1,12 @@
 import * as S from "../styles/ProductCard.styled";
+import type { ProductCard as ProductCardType } from "../types/product";
 
-function ProductCard({ product }) {
+interface ProductCardProps {
+  product: ProductCardType;
+}
+
+
+function ProductCard({ product }: ProductCardProps) {
   return (
     <S.Card href={product.url} target="_self" $hasOption={!!product.option}>
       <S.ImageBox>
