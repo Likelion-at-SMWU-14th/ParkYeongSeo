@@ -7,7 +7,9 @@ import Item3Hover from "../assets/Page3-6.jpeg";
 import Item4 from "../assets/Page3-7.jpeg";
 import Item4Hover from "../assets/Page3-8.jpeg";
 
-export const productCardData = [
+import type { ProductCard } from "../types/product";
+
+export const productCardData: ProductCard[] = [
   {
     id: 1,
     name: "틴티드 립밤 6종 택1",

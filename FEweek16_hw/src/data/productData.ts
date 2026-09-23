@@ -5,8 +5,9 @@ import Product4 from "../assets/Page4-1.png";
 import Product5 from "../assets/Page4-2.jpg";
 import Product6 from "../assets/Page4-3.png";
 
+import type { Product } from "../types/product";
 
-export const productData = [
+export const productData: Product[] = [
   {
     id: 1,
     image: Product1,
