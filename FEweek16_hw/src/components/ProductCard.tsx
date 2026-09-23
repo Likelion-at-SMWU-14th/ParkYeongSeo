@@ -5,10 +5,9 @@ interface ProductCardProps {
   product: ProductCardType;
 }
 
-
 function ProductCard({ product }: ProductCardProps) {
   return (
-    <S.Card href={product.url} target="_self" $hasOption={!!product.option}>
+    <S.Card href={product.url} target="_self">
       <S.ImageBox>
         <S.Image src={product.image} alt={product.name} />
         <S.HoverImage src={product.hoverImage} alt={product.name} />

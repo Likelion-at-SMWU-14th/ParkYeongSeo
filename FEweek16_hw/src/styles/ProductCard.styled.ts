@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface OptionProps {
+  $hasOption: boolean;
+}
+
 export const Card = styled.a`
   display: block;
   text-decoration: none;
@@ -62,7 +66,7 @@ export const InfoRow = styled.div`
   font-size: 0.8rem;
 `;
 
-export const Option = styled.span`
+export const Option = styled.span<OptionProps>`
   display: ${({ $hasOption }) => ($hasOption ? "inline" : "none")};
 
   color: ${({ $hasOption }) => ($hasOption ? "#999" : "transparent")};
