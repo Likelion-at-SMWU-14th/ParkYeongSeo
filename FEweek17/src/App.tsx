@@ -1,15 +1,21 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type SubmitEvent } from "react";
 import { createRecipe, deleteRecipe, getRecipes } from "./api/recipes";
 import RecipeCard from "./components/RecipeCard";
 import RecipeForm from "./components/RecipeForm";
 import * as S from "./styles/styled";
 import type { CreateRecipeRequest, Recipe } from "./types/recipe";
+import { findMissingIngredients, parseIngredients } from "./utils/matchRecipes";
 
 export default function App() {
   const [recipes, setRecipes] = useState<Recipe[]>([]);
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [deletingId, setDeletingId] = useState<string | null>(null);
+
+  const [pantryInput, setPantryInput] = useState("");
+  const [pantryIngredients, setPantryIngredients] = useState<string[] | null>(
+    null,
+  );
 
   async function loadRecipes() {
     setLoading(true);
@@ -59,6 +65,12 @@ export default function App() {
     }
   }
 
+  function handleCheckIngredients(event: SubmitEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    setPantryIngredients(parseIngredients(pantryInput));
+  }
+
   useEffect(() => {
     void loadRecipes();
   }, []);
@@ -75,12 +87,16 @@ export default function App() {
           </S.SectionHeading>
 
           <S.PantryPanel
-            onSubmit={(event) => event.preventDefault()}
+            onSubmit={handleCheckIngredients}
           >
+            <S.PantryLabel htmlFor="pantry">지금 있는 재료</S.PantryLabel>
+
             <S.PantryRow>
               <S.PantryInput
                 id="pantry"
-                placeholder="예: 밥"
+                value={pantryInput}
+                onChange={(event) => setPantryInput(event.target.value)}
+                placeholder="예: 밥, 김치, 달걀, 대파"
               />
               <S.PantryButton type="submit">
                 재료 확인
@@ -97,11 +113,16 @@ export default function App() {
               아직 등록된 레시피가 없어요.
             </S.EmptyMessage>
           ) : (
-            <S.Cards>
+            <S.Cards $scroll={recipes.length > 4}>
               {recipes.map((recipe) => (
                 <RecipeCard
                   key={recipe.id}
                   recipe={recipe}
+                  missingIngredients={
+                    pantryIngredients === null
+                      ? null
+                      : findMissingIngredients(recipe, pantryIngredients)
+                  }
                   disabled={deletingId === recipe.id}
                   onDelete={(id) => void handleDelete(id)}
                 />
