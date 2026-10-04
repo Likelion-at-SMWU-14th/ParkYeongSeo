@@ -54,8 +54,14 @@ export const DoubleLine = styled.div`
 
   span {
     width: 100%;
-    height: 2px;
-
     background: #000;
+  }
+
+  span:first-child {
+    height: 2px;
+  }
+
+  span:last-child {
+    height: 4px;
   }
 `;
