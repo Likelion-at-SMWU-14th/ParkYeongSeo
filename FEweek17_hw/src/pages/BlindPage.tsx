@@ -3,6 +3,11 @@ import {
   useState,
 } from "react";
 
+import {
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
+
 import Header from "../components/Header";
 
 import {
@@ -17,43 +22,62 @@ import type {
 
 import * as S from "../styles/Blind.styles";
 
-const BlindPage = () => {
-  const [artworks, setArtworks] = useState<Artwork[]>([]);
-  const [currentIndex, setCurrentIndex] = useState(0);
+interface BlindLocationState {
+  artworks?: Artwork[];
+  currentIndex?: number;
+}
 
-  const [isLoading, setIsLoading] = useState(true);
+const BlindPage = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const routeState =
+    location.state as BlindLocationState | null;
+
+  const [artworks, setArtworks] = useState<Artwork[]>(
+    routeState?.artworks ?? []
+  );
+
+  const [currentIndex, setCurrentIndex] = useState(
+    routeState?.currentIndex ?? 0
+  );
+
+  const [isLoading, setIsLoading] = useState(
+    !routeState?.artworks?.length
+  );
+
   const [error, setError] = useState("");
 
   useEffect(() => {
+    // RevealPage에서 기존 작품 목록을 넘겨받았다면
+    // API를 다시 호출하지 않음
+    if (routeState?.artworks?.length) {
+      return;
+    }
+
     const loadArtworks = async () => {
       try {
         setIsLoading(true);
         setError("");
 
-        // 1. 이미지가 있는 작품 ID 검색
         const searchResponse =
           await searchArtworks();
 
+        // 너무 많은 상세 요청을 동시에 보내지 않도록
+        // 12개만 사용
         const ids =
-          searchResponse.objectIDs.slice(0, 20);
+          searchResponse.objectIDs.slice(0, 12);
 
-        // 2. 작품 상세 데이터 가져오기
         const results = await Promise.all(
           ids.map((id) => getArtwork(id))
         );
 
-        // 3. 실제 이미지 URL이 있는 작품만 사용
         const artworksWithImages =
           results.filter(
             (artwork) =>
               artwork.primaryImageSmall !== "" ||
               artwork.primaryImage !== ""
           );
-
-        console.log(
-          "Met 작품:",
-          artworksWithImages
-        );
 
         setArtworks(artworksWithImages);
       } catch (error) {
@@ -76,19 +100,66 @@ const BlindPage = () => {
   const currentArtwork =
     artworks[currentIndex];
 
-  const handleImageError = () => {
-    if (
-      currentIndex <
-      artworks.length - 1
-    ) {
-      setCurrentIndex(
-        (prev) => prev + 1
+  const handleLove = () => {
+    if (!currentArtwork) {
+      return;
+    }
+
+    // 기존 Collection 가져오기
+    const saved =
+      localStorage.getItem(
+        "lovedArtworks"
       );
-    } else {
-      setError(
-        "No more artworks available."
+
+    const lovedArtworks: Artwork[] =
+      saved
+        ? JSON.parse(saved)
+        : [];
+
+    // 같은 작품 중복 저장 방지
+    const alreadyLoved =
+      lovedArtworks.some(
+        (artwork) =>
+          artwork.objectID ===
+          currentArtwork.objectID
+      );
+
+    if (!alreadyLoved) {
+      lovedArtworks.push(
+        currentArtwork
+      );
+
+      localStorage.setItem(
+        "lovedArtworks",
+        JSON.stringify(
+          lovedArtworks
+        )
       );
     }
+
+    navigate("/reveal", {
+      state: {
+        artwork: currentArtwork,
+        artworks,
+        currentIndex,
+      },
+    });
+  };
+
+  const handlePass = () => {
+    if (artworks.length === 0) {
+      return;
+    }
+
+    setCurrentIndex(
+      (prev) =>
+        (prev + 1) %
+        artworks.length
+    );
+  };
+
+  const handleImageError = () => {
+    handlePass();
   };
 
   if (isLoading) {
@@ -119,7 +190,6 @@ const BlindPage = () => {
     );
   }
 
-  // Utility Type 실제 사용
   const blindArtwork: BlindArtwork = {
     objectID:
       currentArtwork.objectID,
@@ -156,12 +226,14 @@ const BlindPage = () => {
         <S.ButtonArea>
           <S.LoveButton
             type="button"
+            onClick={handleLove}
           >
             Love
           </S.LoveButton>
 
           <S.PassButton
             type="button"
+            onClick={handlePass}
           >
             Pass
           </S.PassButton>
