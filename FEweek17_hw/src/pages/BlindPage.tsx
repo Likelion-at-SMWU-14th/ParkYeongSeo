@@ -48,9 +48,45 @@ const BlindPage = () => {
 
   const [error, setError] = useState("");
 
+  // 이미 본 작품 ID 가져오기
+  const getSeenArtworkIds = (): number[] => {
+    const saved =
+      localStorage.getItem("seenArtworks");
+
+    if (!saved) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(saved);
+    } catch {
+      return [];
+    }
+  };
+
+  // 작품을 "본 작품"으로 저장
+  const markAsSeen = (
+    objectID: number
+  ) => {
+    const seenIds =
+      getSeenArtworkIds();
+
+    if (!seenIds.includes(objectID)) {
+      const updatedIds = [
+        ...seenIds,
+        objectID,
+      ];
+
+      localStorage.setItem(
+        "seenArtworks",
+        JSON.stringify(updatedIds)
+      );
+    }
+  };
+
   useEffect(() => {
-    // RevealPage에서 기존 작품 목록을 넘겨받았다면
-    // API를 다시 호출하지 않음
+    // Reveal → Next로 돌아온 경우
+    // 기존 작품 목록 재사용
     if (routeState?.artworks?.length) {
       return;
     }
@@ -63,14 +99,34 @@ const BlindPage = () => {
         const searchResponse =
           await searchArtworks();
 
-        // 너무 많은 상세 요청을 동시에 보내지 않도록
-        // 12개만 사용
-        const ids =
-          searchResponse.objectIDs.slice(0, 12);
+        const seenIds =
+          getSeenArtworkIds();
 
-        const results = await Promise.all(
-          ids.map((id) => getArtwork(id))
-        );
+        // 이미 본 작품 제외
+        const unseenIds =
+          searchResponse.objectIDs.filter(
+            (id) =>
+              !seenIds.includes(id)
+          );
+
+        // 그중 12개만 상세 요청
+        const ids =
+          unseenIds.slice(0, 12);
+
+        if (ids.length === 0) {
+          setError(
+            "You've seen all available artworks."
+          );
+
+          return;
+        }
+
+        const results =
+          await Promise.all(
+            ids.map((id) =>
+              getArtwork(id)
+            )
+          );
 
         const artworksWithImages =
           results.filter(
@@ -79,7 +135,11 @@ const BlindPage = () => {
               artwork.primaryImage !== ""
           );
 
-        setArtworks(artworksWithImages);
+        setArtworks(
+          artworksWithImages
+        );
+
+        setCurrentIndex(0);
       } catch (error) {
         console.error(
           "작품을 불러오지 못했습니다.",
@@ -100,12 +160,44 @@ const BlindPage = () => {
   const currentArtwork =
     artworks[currentIndex];
 
+  const goToNextArtwork = () => {
+    if (!currentArtwork) {
+      return;
+    }
+
+    // 현재 작품을 본 작품으로 기록
+    markAsSeen(
+      currentArtwork.objectID
+    );
+
+    if (
+      currentIndex <
+      artworks.length - 1
+    ) {
+      setCurrentIndex(
+        (prev) => prev + 1
+      );
+    } else {
+      // 현재 받아온 작품을 전부 본 경우
+      // 다음 API 묶음을 받아오기 위해 새로 진입
+      navigate("/", {
+        replace: true,
+      });
+
+      window.location.reload();
+    }
+  };
+
   const handleLove = () => {
     if (!currentArtwork) {
       return;
     }
 
-    // 기존 Collection 가져오기
+    // Love한 작품도 본 작품으로 기록
+    markAsSeen(
+      currentArtwork.objectID
+    );
+
     const saved =
       localStorage.getItem(
         "lovedArtworks"
@@ -116,7 +208,6 @@ const BlindPage = () => {
         ? JSON.parse(saved)
         : [];
 
-    // 같은 작품 중복 저장 방지
     const alreadyLoved =
       lovedArtworks.some(
         (artwork) =>
@@ -125,41 +216,38 @@ const BlindPage = () => {
       );
 
     if (!alreadyLoved) {
-      lovedArtworks.push(
-        currentArtwork
-      );
+      const updatedLovedArtworks = [
+        ...lovedArtworks,
+        currentArtwork,
+      ];
 
       localStorage.setItem(
         "lovedArtworks",
         JSON.stringify(
-          lovedArtworks
+          updatedLovedArtworks
         )
       );
     }
 
     navigate("/reveal", {
       state: {
-        artwork: currentArtwork,
+        artwork:
+          currentArtwork,
+
         artworks,
+
         currentIndex,
       },
     });
   };
 
   const handlePass = () => {
-    if (artworks.length === 0) {
-      return;
-    }
-
-    setCurrentIndex(
-      (prev) =>
-        (prev + 1) %
-        artworks.length
-    );
+    goToNextArtwork();
   };
 
   const handleImageError = () => {
-    handlePass();
+    // 이미지가 깨진 작품도 다시 보여주지 않음
+    goToNextArtwork();
   };
 
   if (isLoading) {
