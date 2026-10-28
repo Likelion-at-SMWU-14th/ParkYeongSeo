@@ -1,0 +1,51 @@
+/* 부크크 명조 */
+@font-face {
+  font-family: 'BookkMyungjo';
+  src: url('./assets/BookkMyungjo_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 스텔라체 */
+@font-face {
+  font-family: 'Stellar';
+  src: url('./assets/Stellar_Serif_Bold_Condensed.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 전체 기본 설정 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  width: 100%;
+  min-height: 100%;
+}
+
+/* 모든 페이지 공통 배경 */
+body {
+  background-color: #1b1025;
+  background-image: url('./assets/bg.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+
+  color: #E3CAA9;
+  font-family: 'BookkMyungjo', serif;
+}
+
+/* 모든 View 공통 */
+.home-page,
+.select-page,
+.result-page {
+  width: 100%;
+  min-height: 100vh;
+  background: transparent;
+}
