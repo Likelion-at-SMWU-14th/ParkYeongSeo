@@ -162,7 +162,7 @@ function startTarot() {
 
   .home-title {
     font-size: clamp(50px, 12vw, 65px);
-    margin-bottom: 40px;
+    margin-bottom: 200px;
   }
 
   .category-group {
