@@ -25,7 +25,7 @@ function handleClick() {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 50px;
 
   padding: 18px 38px;
   border: none;
@@ -38,8 +38,8 @@ function handleClick() {
   );
 
   color: #E3CAA9;
-  font-family: 'BookkMyungjo', serif;
-  font-size: 18px;
+  font-family: 'Stellar', serif;
+  font-size: 50px;
   font-weight: 700;
 
   cursor: pointer;
@@ -65,7 +65,7 @@ function handleClick() {
 }
 
 .arrow {
-  font-size: 20px;
+  font-size: 50px;
   transition: transform 0.3s ease;
 }
 
