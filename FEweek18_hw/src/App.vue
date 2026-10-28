@@ -1,11 +1,42 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+import HomeView from './views/HomeView.vue'
+import SelectView from './views/SelectView.vue'
+import ResultView from './views/ResultView.vue'
+
+const currentPage = ref('home')
+const selectedCard = ref(null)
+
+function goSelect() {
+  currentPage.value = 'select'
+}
+
+function showResult(card) {
+  selectedCard.value = card
+  currentPage.value = 'result'
+}
+
+function goHome() {
+  selectedCard.value = null
+  currentPage.value = 'home'
+}
+</script>
 
 <template>
-  <h1>You did it!</h1>
-  <p>
-    Visit <a href="https://vuejs.org/" target="_blank" rel="noopener">vuejs.org</a> to read the
-    documentation
-  </p>
-</template>
+  <HomeView
+    v-if="currentPage === 'home'"
+    @start="goSelect"
+  />
 
-<style scoped></style>
+  <SelectView
+    v-else-if="currentPage === 'select'"
+    @select="showResult"
+  />
+
+  <ResultView
+    v-else-if="currentPage === 'result'"
+    :card="selectedCard"
+    @home="goHome"
+  />
+</template>
