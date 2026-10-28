@@ -1,0 +1,15 @@
+/* 부크크 명조 */
+@font-face {
+  font-family: 'BookkMyungjo';
+  src: url('./assets/BookkMyungjo_Bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* 스텔라체 */
+@font-face {
+  font-family: 'Stellar';
+  src: url('./assets/Stellar_Serif_Bold_Condensed.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
