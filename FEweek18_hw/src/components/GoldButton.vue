@@ -3,6 +3,10 @@ defineProps({
   text: {
     type: String,
     default: '카드 뽑기'
+  },
+  disabled: {
+    type: Boolean,
+    default: false
   }
 })
 
@@ -14,7 +18,11 @@ function handleClick() {
 </script>
 
 <template>
-  <button class="gold-button" @click="handleClick">
+  <button
+    class="gold-button"
+    :disabled="disabled"
+    @click="handleClick"
+  >
     <span>{{ text }}</span>
     <span class="arrow">→</span>
   </button>
@@ -25,51 +33,47 @@ function handleClick() {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 24px;
 
   padding: 18px 38px;
   border: none;
   border-radius: 50px;
 
-  background: linear-gradient(
-    120deg,
-    #93724C,
-    #D1AE84
-  );
-
+  background: linear-gradient(120deg, #93724C, #D1AE84);
   color: #E3CAA9;
-  font-family: 'Stellar', serif;
-  font-size: 50px;
+
+  font-family: 'BookkMyungjo', serif;
+  font-size: 18px;
   font-weight: 700;
 
   cursor: pointer;
 
   transition:
-    background 0.3s ease,
     color 0.3s ease,
     transform 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    opacity 0.3s ease;
 }
 
-.gold-button:hover {
-  background: linear-gradient(
-    120deg,
-    #D1AE84,
-    #E3CAA9
-  );
-
+.gold-button:hover:not(:disabled) {
+  background: linear-gradient(120deg, #D1AE84, #E3CAA9);
   color: #654A32;
   transform: translateY(-3px);
-
   box-shadow: 0 8px 24px rgba(209, 174, 132, 0.35);
 }
 
+.gold-button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
 .arrow {
-  font-size: 50px;
+  font-size: 20px;
   transition: transform 0.3s ease;
 }
 
-.gold-button:hover .arrow {
+.gold-button:hover:not(:disabled) .arrow {
   transform: translateX(5px);
 }
 </style>

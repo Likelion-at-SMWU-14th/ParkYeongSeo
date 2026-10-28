@@ -7,8 +7,10 @@ import ResultView from './views/ResultView.vue'
 
 const currentPage = ref('home')
 const selectedCard = ref(null)
+const selectedCategory = ref('')
 
-function goSelect() {
+function goSelect(category) {
+  selectedCategory.value = category
   currentPage.value = 'select'
 }
 
@@ -19,6 +21,7 @@ function showResult(card) {
 
 function goHome() {
   selectedCard.value = null
+  selectedCategory.value = ''
   currentPage.value = 'home'
 }
 </script>
@@ -37,6 +40,7 @@ function goHome() {
   <ResultView
     v-else-if="currentPage === 'result'"
     :card="selectedCard"
+    :category="selectedCategory"
     @home="goHome"
   />
 </template>
