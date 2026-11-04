@@ -1,16 +1,37 @@
 
+"use client";
+
+import { useState } from "react";
+import PageHeader from "@/components/PageHeader";
+import GoldButton from "@/components/GoldButton";
+import FortuneSelector from "@/components/FortuneSelector";
+import TarotCard from "@/components/TarotCard";
+
 export default function Home() {
+  const [selected, setSelected] = useState("");
+  const [flipped, setFlipped] = useState(false);
+
   return (
-    <div className="page-container">
-      <h1 className="page-title">오늘의 타로</h1>
+    <div className="page-container" style={{ gap: "40px" }}>
+      <PageHeader
+        title="오늘의 타로"
+        description="오늘 어떤 운세가 궁금하신가요?"
+      />
 
-      <p className="page-description">
-        오늘 당신의 운명을 타로 카드로 만나보세요.
-      </p>
+      <FortuneSelector
+        selected={selected}
+        onSelect={setSelected}
+      />
 
-      <button className="gold-button">
+      <GoldButton disabled={!selected}>
         카드 뽑기 →
-      </button>
+      </GoldButton>
+
+      <TarotCard
+        name="테스트 카드"
+        flipped={flipped}
+        onClick={() => setFlipped(!flipped)}
+      />
     </div>
   );
 }
