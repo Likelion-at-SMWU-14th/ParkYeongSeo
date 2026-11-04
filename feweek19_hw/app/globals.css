@@ -291,34 +291,47 @@ main {
   font-size: 15px;
 }
 
-@media (max-width: 768px) {
-  .tarot-result {
-    flex-direction: column;
-    gap: 32px;
-  }
 
-  .result-image {
-    width: min(70vw, 300px);
-  }
+/* =========================
+   STEP 4 - HOME PAGE
+========================= */
 
-  .result-content {
-    text-align: center;
-  }
+.home-page {
+  gap: 0;
+  padding-top: 100px;
+  padding-bottom: 100px;
+}
 
-  .result-content h2 {
-    font-size: 36px;
-  }
+/* 제목 아래 운세 선택 영역 */
+.fortune-home {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 64px;
+}
 
-  .result-content h3 {
-    font-size: 28px;
-  }
+/* 운세 선택 안내 문구 */
+.fortune-question {
+  margin: 0 0 28px;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 20px;
+  text-align: center;
+}
 
-  .result-description {
-    margin: 24px 0;
-    font-size: 18px;
-  }
+/* 카드 뽑기 버튼 영역 */
+.draw-button-wrapper {
+  margin-top: 64px;
+}
 
-  .result-keywords {
-    justify-content: center;
-  }
+/* 금색 버튼 크기 */
+.draw-button-wrapper .gold-button {
+  min-width: 180px;
+  min-height: 64px;
+}
+
+/* 활성화된 버튼 */
+.draw-button-wrapper .gold-button:not(:disabled) {
+  box-shadow: 0 8px 28px rgba(164, 125, 80, 0.2);
 }
