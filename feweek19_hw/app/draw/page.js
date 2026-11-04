@@ -1,26 +1,34 @@
 
+import { redirect } from "next/navigation";
+
+import PageHeader from "@/components/PageHeader";
+import TarotDraw from "@/components/TarotDraw";
+import { isValidCategory } from "@/lib/tarotData";
+
 export default async function DrawPage({
   searchParams,
 }) {
   const { category } = await searchParams;
 
-  const fortuneNames = {
+  // 잘못된 운세 분야라면 메인으로 이동
+  if (!isValidCategory(category)) {
+    redirect("/");
+  }
+
+  const categoryNames = {
     love: "연애운",
     general: "종합운",
     money: "금전운",
   };
 
   return (
-    <div className="page-container">
-      <h1 className="page-title">
-        카드를 선택하세요
-      </h1>
+    <div className="page-container draw-page">
+      <PageHeader
+        title="당신의 카드를 선택하세요"
+        description={`${categoryNames[category]}에 대한 메시지를 만나보세요.`}
+      />
 
-      <p className="page-description">
-        선택한 운세: {
-          fortuneNames[category] || "선택되지 않음"
-        }
-      </p>
+      <TarotDraw category={category} />
     </div>
   );
 }
