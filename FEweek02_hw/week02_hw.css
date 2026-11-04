@@ -1,0 +1,181 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+/* 기본 배경 설정 */
+body {
+    font-family: Pretendard Variable, Pretendard;
+    background-color: var(--background-color);
+    margin: 0;
+    padding: 0;
+}
+
+:root {
+    --primary-color: #000000;
+    --secondary-color: #a0a0a0;
+    --background-color: #FFFFFF;
+    --font-family: 'Pretendard Variable', 'Pretendard', sans-serif;
+}
+
+body.dark-mode {
+    --primary-color: #FFFFFF;
+    --secondary-color: #a0a0a0;
+    --background-color: #191919;
+}
+
+.container {
+    width: 585px;
+    margin: 0 auto;
+    background-color: var(--background-color);
+}
+
+.content-container {
+    width: 585px;
+    margin: auto;
+    justify-content: flex-start;
+    display: block;
+}
+
+.header-table td {
+    padding-top: 12px;
+}
+
+.profile-img {
+    width: 3rem;
+    padding-right: 16px;
+}
+
+.username {
+    color: var(--primary-color);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 700;
+    letter-spacing: -0.72px;
+    margin: 0px;
+}
+
+.location {
+    color: var(--primary-color);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    letter-spacing: -0.32px;
+    padding-top: 2px;
+    padding-bottom: 0.5rem;
+    margin: 0px;
+}
+
+.mode-btn {
+    width: 1.125rem;
+    text-align: center;
+    vertical-align: middle;
+}
+
+#light-mode {
+    display: inline;
+    cursor: pointer;
+}
+
+#dark-mode {
+    display: none;
+    cursor: pointer;
+}
+
+.action-table img {
+    vertical-align: middle;
+}
+
+.icon {
+    width: 24px;
+    padding-right: 4px;
+}
+
+.count {
+    width: 1.875rem;
+    padding-right: 8px;
+    font-weight: 600;
+    letter-spacing: -0.72px;
+    color: var(--primary-color);
+}
+
+.bookmark {
+    width: 30px;
+    text-align: right;
+}
+
+
+.text-table {
+    vertical-align: middle;
+}
+
+.username-content {
+    padding-right: 8px;
+}
+
+.post-content {
+    padding-right: 4px;
+    display: inline;
+    color: var(--primary-color);
+}
+
+.bold-text {
+    font-weight: 600;
+    color: var(--primary-color);
+}
+
+.text-table p {
+    margin: 0;
+}
+
+.icon .heart-icon {
+    cursor: pointer;
+}
+
+body.dark-mode .icon .heart-icon {
+    content: url('./asset/heart-unfilled-dark.png');
+}
+
+.icon .heart-icon.hearted{
+    content: url('./asset/heart-filled.png');
+}
+
+body.dark-mode .icon .heart-icon.hearted {
+    content: url('./asset/heart-filled.png');
+}
+
+.bookmark .bookmark-icon {
+    cursor: pointer;
+}
+
+body.dark-mode .bookmark .bookmark-icon {
+    content: url('./asset/bookmark-unfilled-dark.png');
+}
+
+.bookmark .bookmark-icon.bookmarked {
+    content: url('./asset/bookmark-filled.png');
+}
+
+body.dark-mode .bookmark .bookmark-icon.bookmarked {
+    content: url('./asset/bookmark-filled-dark.png');
+}
+
+.more-content {
+    color: var(--secondary-color);
+    text-align: left;
+}
+
+.less-content {
+    color: var(--secondary-color);
+    text-align: left;
+    display: none;
+}
+
+body.dark-mode .comment-icon {
+    content: url('./asset/comment-dark.png');
+}
+
+body.dark-mode .regram-icon {
+    content: url('./asset/regram-dark.png');
+}
+
+body.dark-mode .share-icon {
+    content: url('./asset/share-dark.png');
+}

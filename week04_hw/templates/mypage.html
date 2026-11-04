@@ -1,0 +1,61 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🦁 내 프로필</title>
+    <link rel="stylesheet" href="{% static 'css/mypage.css' %}" />
+  </head>
+  <body>
+    <main class="mypage-box">
+      <header class="mypage-header">
+        <div class="mypage-header-left">
+          <img src="{% static 'images/mypage-white.svg' %}" alt="프로필 아이콘" class="mypage-header-icon" />
+          <h2>내 프로필</h2>
+        </div>
+        <img class="icon" src="{% static 'images/icon.svg' %}" />
+      </header>
+
+      <section class="mypage-profile">
+        <div class="mypage-profile-image-wrap">
+          <img
+            src="{% static 'images/profile.svg' %}"
+            alt="프로필 이미지"
+            class="mypage-profile-image"
+          />
+        </div>
+
+        <div class="mypage-text">
+          <h3><span>{{ user.first_name }}</span> 사자님,</h3>
+          <p>숙명여대 LIKELION 14TH에 오신 것을 환영합니다!</p>
+        </div>
+
+        <button class="mypage-follow-btn" id="followBtn" type="button">
+            <img src="{% static 'images/follow.svg' %}" alt="" class="mypage-follow-icon" id="followIcon"/>
+            <span class="follow-text">팔로우</span>
+        </button>
+
+        <section class="mypage-info-card">
+          <div class="mypage-info-row">
+            <span class="mypage-info-label">GitHub ID</span>
+            <span class="mypage-info-value">24yp01</span>
+          </div>
+
+          <div class="mypage-info-row">
+            <span class="mypage-info-label">Email</span>
+            <span class="mypage-info-value">24scarlett10@sookmyung.ac.kr</span>
+          </div>
+
+          <div class="mypage-info-row">
+            <span class="mypage-info-label">Instagram</span>
+            <span class="mypage-info-instagram"><a href="https://www.instagram.com/paxxword914/" target="_blank">@paxxword914</a></span>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <a href="{% url 'login' %}" class="mypage-logout-text">로그아웃</a>
+  </body>
+  <script src="{% static 'js/mypage.js' %}"></script>
+</html>

@@ -1,0 +1,215 @@
+@import url("https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css");
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: "Pretendard Variable";
+  background: linear-gradient(180deg, #362a21 0%, #0d0d0d 100%);
+  background-blend-mode: overlay;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.mypage-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 37.75rem;
+  padding: 2.19rem 1.81rem 2.19rem;
+  border-radius: 1.125rem;
+  background: rgba(60, 60, 60, 0.3);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  width: 1.88213rem;
+  height: 2.17888rem;
+}
+
+.mypage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.mypage-header-left {
+  display: flex;
+  align-items: center;
+  gap: 0.9375rem;
+}
+
+.mypage-header-icon {
+  width: 1.88213rem;
+  height: 2.17888rem;
+}
+
+.mypage-header h2 {
+  margin: 0;
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 136%;
+  letter-spacing: -0.042rem;
+}
+
+.mypage-header-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+
+.mypage-header-right-icon {
+  display: block;
+  width: 2rem;
+  height: 2rem;
+}
+
+.mypage-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.mypage-profile-image-wrap {
+  width: 8.5rem;
+  height: 8.5rem;
+  border-radius: 50%;
+  overflow: hidden;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mypage-profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mypage-text {
+  margin-top: 1.56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.62rem;
+}
+
+.mypage-text h3 {
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 2.25rem;
+  font-weight: 600;
+  line-height: 136%;
+  letter-spacing: -0.063rem;
+}
+
+.mypage-text h3 span {
+  color: #ee7521;
+}
+
+.mypage-text p {
+  margin: 0;
+  color: #fff;
+  text-align: center;
+  font-size: 1.25rem;
+  font-weight: 400;
+  line-height: 136%;
+  letter-spacing: -0.035rem;
+}
+
+.mypage-follow-btn {
+  margin-top: 1.88rem;
+  width: 34.125rem;
+  height: 4.25rem;
+  border-radius: 0.625rem;
+  background: #EE7521;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  color: #fff;
+  font-size: 1.375rem;
+  font-weight: 600;
+  line-height: 136%;
+  letter-spacing: -0.0385rem;
+  text-decoration: none;
+}
+
+.mypage-follow-icon {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.mypage-info-card {
+  width: 34.125rem;
+  margin-top: 1.75rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #404040;
+}
+
+.mypage-info-row {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 1.75rem;
+}
+
+.mypage-info-row:last-child {
+  margin-bottom: 0;
+}
+
+.mypage-info-label {
+  min-width: 7rem;
+  color: #ee7521;
+  font-size: 1.125rem;
+  font-weight: 600;
+  line-height: 136%;
+  letter-spacing: -0.0315rem;
+}
+
+.mypage-info-value{
+  color: #fff;
+  font-size: 1.125rem;
+  font-weight: 400;
+  line-height: 136%;
+  letter-spacing: -0.0315rem;
+  word-break: break-all;
+}
+
+.mypage-info-instagram a{
+  color: #fff;
+}
+
+.mypage-info-instagram a:visited {
+  color: #ee7521;
+}
+
+.mypage-logout-text {
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 136%;
+  letter-spacing: -0.035rem;
+  text-decoration: underline;
+}
+
+.mypage-follow-btn.following {
+  background: #fff;
+  color: #ee7521;
+}

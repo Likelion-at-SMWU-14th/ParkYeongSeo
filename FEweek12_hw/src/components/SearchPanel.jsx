@@ -1,0 +1,96 @@
+// src/components/SearchPanel.jsx
+import styled from 'styled-components';
+import { useSearchStore } from '../store/searchStore';
+import { usePlaylistStore } from '../store/playlistStore';
+import VideoCard from './VideoCard';
+
+export default function SearchPanel() {
+  const query = useSearchStore((s) => s.query);
+  const setQuery = useSearchStore((s) => s.setQuery);
+  const search = useSearchStore((s) => s.search);
+  const results = useSearchStore((s) => s.results);
+  const loading = useSearchStore((s) => s.loading);
+  const error = useSearchStore((s) => s.error);
+
+  const items = usePlaylistStore((s) => s.items);
+  const toggleItem = usePlaylistStore((s) => s.toggleItem);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    search();
+  };
+
+  return (
+  <Page>
+    <SearchBar onSubmit={handleSubmit}>
+      <input
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="공식 그룹명 및 이름으로 검색해주세요 ♬"
+      />
+      <button type="submit">검색</button>
+    </SearchBar>
+
+    <ResultList>
+      {loading && <p>검색 중...</p>}
+      {error && <p>{error}</p>}
+      {results.map((video) => {
+        const saved = items.some((i) => i.id === video.id);
+        return (
+          <VideoCard
+            key={video.id}
+            {...video}
+            liked={saved}
+            onLikeClick={() => toggleItem(video)}
+          />
+        );
+      })}
+    </ResultList>
+  </Page>
+);
+}
+
+
+const Page = styled.section`
+  background: #f2f6f9;
+  border-radius: 20px 4px 4px 20px;
+  padding: 22px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+`;
+
+const ResultList = styled.div`
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding-right: 4px;
+`;
+
+const SearchBar = styled.form`
+  display: flex;
+  gap: 10px;
+  height: 48px;
+
+  input {
+    flex: 1;
+    height: 48px;
+    padding: 0 16px;
+    border-radius: 10px;
+    border: 1px solid #d5e2ea;
+    font-size: 15px;
+  }
+
+  button {
+    height: 48px;
+    padding: 0 20px;
+    border: none;
+    border-radius: 10px;
+    background: var(--theme-color, #7fb8e0);
+    cursor: pointer;
+  }
+`;
