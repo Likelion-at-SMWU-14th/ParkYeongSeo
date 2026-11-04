@@ -89,13 +89,6 @@ export default function TarotDraw({ category }) {
 
     // 중복 실행 방지
     isNavigatingRef.current = true;
-
-    // 카드 앞면을 1.5초 동안 보여주기
-    timerRef.current = setTimeout(() => {
-      router.push(
-        `/result/${card.id}?category=${category}`
-      );
-    }, 1500);
   };
 
   if (loading) {

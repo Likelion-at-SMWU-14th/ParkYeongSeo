@@ -55,10 +55,10 @@ export default function TarotResult({
         </div>
 
         <Link
-          href={`/draw?category=${category}`}
+          href={`/`}
           className="result-retry-button"
         >
-          다시 뽑기 →
+          돌아가기 →
         </Link>
       </div>
     </section>
