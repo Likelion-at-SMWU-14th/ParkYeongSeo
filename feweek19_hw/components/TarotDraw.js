@@ -132,10 +132,6 @@ export default function TarotDraw({ category }) {
               disabled={selectedCard !== null}
               onClick={() => handleCardClick(card)}
             />
-
-            <span className="card-number">
-              CARD 0{index + 1}
-            </span>
           </div>
         ))}
       </div>

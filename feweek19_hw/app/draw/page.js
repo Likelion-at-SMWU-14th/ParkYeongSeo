@@ -24,8 +24,7 @@ export default async function DrawPage({
   return (
     <div className="page-container draw-page">
       <PageHeader
-        title="당신의 카드를 선택하세요"
-        description={`${categoryNames[category]}에 대한 메시지를 만나보세요.`}
+        title="카드를 선택하세요"
       />
 
       <TarotDraw category={category} />
