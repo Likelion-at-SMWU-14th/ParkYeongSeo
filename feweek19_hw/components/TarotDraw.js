@@ -14,11 +14,10 @@ export default function TarotDraw({ category }) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // 페이지 이동 타이머 및 중복 실행 방지
-  const timerRef = useRef(null);
   const isNavigatingRef = useRef(false);
+  const timerRef = useRef(null);
 
-  // 페이지 진입 시 랜덤 카드 3장 요청
+  // 랜덤 카드 3장 가져오기
   useEffect(() => {
     const controller = new AbortController();
 
@@ -33,9 +32,14 @@ export default function TarotDraw({ category }) {
           signal: controller.signal,
         });
 
+        // HTTP 오류를 먼저 확인
+        if (!response.ok) {
+          throw new Error("카드를 불러오지 못했습니다.");
+        }
+
         const data = await response.json();
 
-        if (!response.ok || !data.success) {
+        if (!data.success) {
           throw new Error(
             data.message || "카드를 불러오지 못했습니다."
           );
@@ -60,35 +64,31 @@ export default function TarotDraw({ category }) {
 
   // 페이지를 벗어나면 타이머 정리
   useEffect(() => {
+    const timer = timerRef;
+
     return () => {
-      if (timerRef.current !== null) {
-        clearTimeout(timerRef.current);
+      if (timer.current !== null) {
+        clearTimeout(timer.current);
       }
     };
   }, []);
 
-  // 카드 선택
+  // 카드 클릭
   const handleCardClick = (card) => {
-    if (selectedCard !== null) return;
+    // 중복 클릭 방지
+    if (isNavigatingRef.current) return;
 
-    setSelectedCard(card.id);
-  };
-
-  // 카드 뒤집기 완료 후 1.5초 기다렸다가 이동
-  const handleFlipEnd = (event, card) => {
-    if (
-      selectedCard !== card.id ||
-      event.propertyName !== "transform" ||
-      event.target !== event.currentTarget.querySelector(
-        ".tarot-card-inner"
-      ) ||
-      isNavigatingRef.current
-    ) {
-      return;
-    }
-
-    // 중복 실행 방지
     isNavigatingRef.current = true;
+
+    // 카드 뒤집기 시작
+    setSelectedCard(card.id);
+
+    // 0.8초 뒤집기 + 앞면 1초 감상
+    timerRef.current = setTimeout(() => {
+      router.push(
+        `/result/${card.id}?category=${category}`
+      );
+    }, 1800);
   };
 
   if (loading) {
@@ -110,13 +110,10 @@ export default function TarotDraw({ category }) {
   return (
     <section className="tarot-draw">
       <div className="tarot-card-list">
-        {cards.map((card, index) => (
+        {cards.map((card) => (
           <div
             key={card.id}
             className="tarot-card-wrapper"
-            onTransitionEnd={(event) =>
-              handleFlipEnd(event, card)
-            }
           >
             <TarotCard
               image={card.image}
